@@ -1,0 +1,28 @@
+$layout-breakpoint-xs:     600px !default;
+$layout-breakpoint-sm:     960px !default;
+$layout-breakpoint-md:     1280px !default;
+$layout-breakpoint-lg:     1920px !default;
+
+$colors:( 
+    primary: $primary-color
+); 
+
+$border-colors:(
+    base:rgba(0,0,0,0.12)
+);
+
+@function color($key: 'primary') { 
+    @return map-get($colors, $key); 
+} 
+    
+@function font-color($key: 'base') { 
+    @return map-get($font-colors, $key); 
+}
+
+@function border-color($key: 'base') { 
+    @return map-get($border-colors, $key); 
+} 
+    
+@function background-color($key: 'base') { 
+    @return map-get($background-colors, $key); 
+}
