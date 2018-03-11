@@ -1,0 +1,12 @@
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate>
+
+  <mat-form-field>
+    <input matInput  formControlName="login" name="login" placeholder="Username" type="text">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput  formControlName="password" name="password" placeholder="Password" [type]="hide ? 'password' : 'text'">
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+  </mat-form-field>
+
+</form>

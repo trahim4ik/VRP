@@ -1,44 +1,61 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using VRP.Application.Extensions;
+using VRP.DAL;
+using VRP.Entities;
 
 namespace VRP.Api {
-	public class Startup {
-		public Startup(IConfiguration configuration) {
-			Configuration = configuration;
-		}
+    public class Startup {
+        public Startup(IConfiguration configuration) {
+            Configuration = configuration;
+        }
 
-		public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; }
 
-		// This method gets called by the runtime. Use this method to add services to the container.
-		public void ConfigureServices(IServiceCollection services) {
-			services.AddMvc();
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services) {
 
-			services.AddSwaggerGen(c => {
-				c.SwaggerDoc("v1", new Info { Title = "VRP Application", Version = "v1" });
-			});
-		}
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("VRP")));
 
-		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
+            services.AddIdentity<User, Role>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
-			app.AddDevMiddlewares();
+            services.AddMvc();
 
-			if (env.IsProduction()) {
-				app.UseResponseCompression();
-			}
+            services.AddSwaggerGen(c => {
+                c.SwaggerDoc("v1", new Info { Title = "VRP Application", Version = "v1" });
+            });
+        }
 
-			app.SetupMigrations();
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
 
-			app.UseAuthentication();
+            app.AddDevMiddlewares();
 
-			app.UseStaticFiles();
+            if (env.IsProduction()) {
+                app.UseResponseCompression();
+            }
 
-			app.UseMvc();
+            app.SetupMigrations();
 
-		}
-	}
+            app.UseAuthentication();
+
+            DefaultFilesOptions options = new DefaultFilesOptions();
+            options.DefaultFileNames.Clear();
+            options.DefaultFileNames.Add("index.html");
+            app.UseDefaultFiles(options);
+
+            app.UseStaticFiles();
+
+            app.UseMvc();
+
+        }
+    }
 }

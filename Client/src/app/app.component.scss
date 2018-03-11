@@ -1,1 +1,5 @@
-@import '~sass/variables';
+@import "~sass/abstract";
+
+h1 {
+    color: font-color("primary");
+}
