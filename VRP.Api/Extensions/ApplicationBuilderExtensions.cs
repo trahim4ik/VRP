@@ -9,7 +9,6 @@ using VRP.DAL;
 namespace VRP.Application.Extensions {
     public static class ApplicationBuilderExtensions {
         public static IApplicationBuilder SetupMigrations(this IApplicationBuilder app) {
-            // For more details on creating database during deployment see http://go.microsoft.com/fwlink/?LinkID=615859
             try {
                 var context = app.ApplicationServices.GetService<ApplicationDbContext>();
                 context.Database.Migrate();

@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
 using VRP.Application.Extensions;
-using VRP.DAL;
-using VRP.Entities;
+using VRP.DAL.Interfaces;
 
 namespace VRP.Api {
     public class Startup {
@@ -20,14 +19,23 @@ namespace VRP.Api {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("VRP")));
+            services.AddCustomDbContext(Configuration);
 
-            services.AddIdentity<User, Role>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+            services.AddCustomIdentity();
 
-            services.AddMvc();
+            services.RegisterCustomServices();
+
+            services.AddAuthorization()
+                .AddAuthentication()
+                .AddCookie();
+
+            services.AddMvc()
+                .AddJsonOptions(options => {
+                    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                    options.SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
+                    options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
+                });
 
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new Info { Title = "VRP Application", Version = "v1" });
@@ -35,7 +43,7 @@ namespace VRP.Api {
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IDbInitializer dbInitializer) {
 
             app.AddDevMiddlewares();
 
@@ -50,11 +58,14 @@ namespace VRP.Api {
             DefaultFilesOptions options = new DefaultFilesOptions();
             options.DefaultFileNames.Clear();
             options.DefaultFileNames.Add("index.html");
+
             app.UseDefaultFiles(options);
 
             app.UseStaticFiles();
 
             app.UseMvc();
+
+            dbInitializer.Initialize();
 
         }
     }

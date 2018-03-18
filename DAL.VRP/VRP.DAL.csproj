@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\VRP.Core\VRP.Core.csproj" />
     <ProjectReference Include="..\VRP.Entities\VRP.Entities.csproj" />
   </ItemGroup>
 
