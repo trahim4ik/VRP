@@ -1,47 +1,42 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using VRP.Core.Constants;
-using VRP.DAL.Interfaces;
 using VRP.Entities;
 
 namespace VRP.DAL {
 
-    public class DbInitializer : IDbInitializer {
+    public static class DbInitializer {
 
-        private readonly UserManager<User> _userManager;
-        private readonly RoleManager<Role> _roleManager;
+        public static void Initialize(IServiceProvider serviceProvider) {
 
-        public DbInitializer(
-            ApplicationDbContext context,
-            UserManager<User> userManager,
-            RoleManager<Role> roleManager) {
-            _userManager = userManager;
-            _roleManager = roleManager;
-        }
+            CreateRoles(serviceProvider);
 
-        public void Initialize() {
-
-            CreateRoles();
-
-            CreateUsers();
+            CreateUsers(serviceProvider);
 
         }
 
-        private async void CreateRoles() {
+        private static void CreateRoles(IServiceProvider serviceProvider) {
+            var roleManager = serviceProvider.GetRequiredService<RoleManager<Role>>();
             foreach (var role in Roles.AllRoles) {
-                if (!await _roleManager.RoleExistsAsync(role)) {
-                    await _roleManager.CreateAsync(new Role { Name = role, Description = $"The base {role} role." });
+                if (!roleManager.RoleExistsAsync(role).Result) {
+                    roleManager.CreateAsync(new Role { Name = role, Description = $"The base {role} role." }).Wait();
                 }
             }
         }
 
-        private async void CreateUsers() {
-            string user = "vladsqil@gmail.com";
-            string password = "Test1234";
+        private static void CreateUsers(IServiceProvider serviceProvider) {
+            var user = "vladsqil@gmail.com";
+            var password = "Test1234";
 
-            if (await _userManager.FindByNameAsync(user) != null) return;
+            var userManager = serviceProvider.GetRequiredService<UserManager<User>>();
 
-            await _userManager.CreateAsync(new User { UserName = user, Email = user, EmailConfirmed = true }, password);
-            await _userManager.AddToRoleAsync(await _userManager.FindByNameAsync(user), Roles.Administrator);
+            if (userManager.FindByNameAsync(user).Result != null) return;
+
+            userManager.CreateAsync(new User { UserName = user, Email = user, EmailConfirmed = true }, password).Wait();
+
+            var admin = userManager.FindByNameAsync(user).Result;
+            userManager.AddToRoleAsync(admin, Roles.Administrator).Wait();
         }
     }
 }

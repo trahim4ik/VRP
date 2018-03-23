@@ -6,7 +6,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
 using VRP.Application.Extensions;
-using VRP.DAL.Interfaces;
+using VRP.DAL;
+using System;
 
 namespace VRP.Api {
     public class Startup {
@@ -43,7 +44,7 @@ namespace VRP.Api {
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IDbInitializer dbInitializer) {
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider) {
 
             app.AddDevMiddlewares();
 
@@ -65,7 +66,7 @@ namespace VRP.Api {
 
             app.UseMvc();
 
-            dbInitializer.Initialize();
+            DbInitializer.Initialize(serviceProvider);
 
         }
     }

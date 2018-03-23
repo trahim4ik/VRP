@@ -1,3 +1,18 @@
-<p>
-  admin-page works!
-</p>
+<mat-toolbar color="primary" class="example-toolbar">
+  <button mat-icon-button (click)="snav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-sidenav-container">
+
+  <mat-sidenav #snav [mode]="'side'">
+    <admin-side-menu></admin-side-menu>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

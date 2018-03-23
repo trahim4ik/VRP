@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 import {
     MatButtonModule,
     MatCardModule,
@@ -7,7 +7,11 @@ import {
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatSnackBarModule
+    MatListModule,
+    MatSnackBarModule,
+    MatSidenavModule,
+    MatTabsModule,
+    MatToolbarModule
 } from '@angular/material';
 
 @NgModule({
@@ -18,9 +22,11 @@ import {
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
+        MatListModule,
         MatSnackBarModule,
-
-        NoopAnimationsModule
+        MatSidenavModule,
+        MatTabsModule,
+        MatToolbarModule
     ],
     exports: [
         MatButtonModule,
@@ -29,9 +35,11 @@ import {
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
+        MatListModule,
         MatSnackBarModule,
-
-        NoopAnimationsModule
+        MatSidenavModule,
+        MatTabsModule,
+        MatToolbarModule
     ]
 })
 export class AppMaterialModule { }

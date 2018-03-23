@@ -1,10 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace VRP.Api.Controllers {
-    public class BaseController : Controller {
+    [Authorize]
+    public abstract class BaseController : Controller {
 
-        protected BaseController() {
+        protected IServiceProvider ServiceProvider;
 
+        protected BaseController(IServiceProvider serviceProvider) {
+            ServiceProvider = serviceProvider;
         }
 
     }

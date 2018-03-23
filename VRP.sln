@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VRP.Api", "VRP.Api\VRP.Api.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VRP.Entities", "VRP.Entities\VRP.Entities.csproj", "{D2FF4A7C-92DD-4414-9F63-EE5DFFDD9A42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VRP.Dtos", "VRP.Dtos\VRP.Dtos.csproj", "{9000CAB4-66B0-4DB6-9F2C-CE8FFCBDB5AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VRP.Dtos", "VRP.Dtos\VRP.Dtos.csproj", "{9000CAB4-66B0-4DB6-9F2C-CE8FFCBDB5AC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VRP.DeepLerning", "VRP.DeepLerning\VRP.DeepLerning.csproj", "{2A45EEFE-C3E6-45C1-B38F-D309B9399DFB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VRP.Services", "VRP.Services\VRP.Services.csproj", "{F24A4EA1-6E34-4133-96F1-01E8C0652AC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{9000CAB4-66B0-4DB6-9F2C-CE8FFCBDB5AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9000CAB4-66B0-4DB6-9F2C-CE8FFCBDB5AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9000CAB4-66B0-4DB6-9F2C-CE8FFCBDB5AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A45EEFE-C3E6-45C1-B38F-D309B9399DFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A45EEFE-C3E6-45C1-B38F-D309B9399DFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A45EEFE-C3E6-45C1-B38F-D309B9399DFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A45EEFE-C3E6-45C1-B38F-D309B9399DFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F24A4EA1-6E34-4133-96F1-01E8C0652AC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F24A4EA1-6E34-4133-96F1-01E8C0652AC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F24A4EA1-6E34-4133-96F1-01E8C0652AC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F24A4EA1-6E34-4133-96F1-01E8C0652AC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
