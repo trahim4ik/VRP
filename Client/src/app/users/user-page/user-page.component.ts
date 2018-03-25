@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { select } from '@angular-redux/store';
 
 @Component({
   selector: 'app-user-page',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserPageComponent implements OnInit {
 
-  constructor() { }
+  @select() user;
+
+  constructor(protected fb: FormBuilder) { }
 
   ngOnInit() {
+    console.log(this.user);
   }
 
 }

@@ -2,14 +2,16 @@ import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-@Injectable()
-export class UsersResolver implements Resolve<any> {
+import { UsersNetwork } from './users.network';
 
-    constructor() {
+@Injectable()
+export class UserResolver implements Resolve<any> {
+
+    constructor(protected network: UsersNetwork) {
     }
 
     resolve(route: ActivatedRouteSnapshot): Observable<any> | any {
         const id = +route.params['id'];
-        return id;
+        return this.network.usersController.get(id);
     }
 }

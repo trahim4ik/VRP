@@ -1,9 +1,7 @@
 import { combineReducers } from 'redux';
-import { composeReducers, defaultFormReducer } from '@angular-redux/form';
-import { routerReducer } from '@angular-redux/router';
 
+import { userReducer } from '../users/shared';
 
-export const rootReducer = composeReducers(
-    defaultFormReducer(),
-    combineReducers({ crouter: routerReducer })
-);
+export const rootReducer = combineReducers({
+    user: userReducer
+});

@@ -5,9 +5,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
-using VRP.Application.Extensions;
 using VRP.DAL;
 using System;
+using VRP.Api.Extensions;
+using VRP.Services;
 
 namespace VRP.Api {
     public class Startup {
@@ -25,6 +26,10 @@ namespace VRP.Api {
             services.AddCustomIdentity();
 
             services.RegisterCustomServices();
+
+            services.AddRepositories();
+
+            services.AddApplicationServices();
 
             services.AddAuthorization()
                 .AddAuthentication()
@@ -52,7 +57,7 @@ namespace VRP.Api {
                 app.UseResponseCompression();
             }
 
-            app.SetupMigrations();
+            app.SetupMigrations(serviceProvider.GetRequiredService<ApplicationDbContext>());
 
             app.UseAuthentication();
 

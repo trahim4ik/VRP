@@ -7,13 +7,13 @@ import 'rxjs/add/operator/share';
 
 type TypeConstructor<T> = (value: any) => T;
 
-export abstract class BaseData {
-    protected apiRelativePath: String = (process.env.APP_URL ? process.env.APP_URL : '') + '/api/';
+export abstract class BaseController {
+
+    protected apiRelativePath = '/api/';
 
     constructor(
         protected http: Http,
-        protected ngRedux: NgRedux<any>,
-        private production: boolean = process.env.NODE_ENV === 'production'
+        protected ngRedux: NgRedux<any>
     ) {
         const props = {};
         for (const name in (<any>this).__proto__) {
@@ -21,16 +21,14 @@ export abstract class BaseData {
                 props[this[name]] = `${(<any>this).__proto__.constructor.name}.${name}`;
             }
         }
-        //this.ngRedux.setActionTypes(props);
+        console.log(props);
     }
 
     public handleError(error: any) {
-        if (!this.production) {
-            console.error((error._body) ? error._body : error.status ? `${error.status} - ${error.statusText}` : 'Server error');
-        }
+        console.error((error._body) ? error._body : error.status ? `${error.status} - ${error.statusText}` : 'Server error');
 
         this.ngRedux.dispatch({
-            type: BaseData.prototype.handleError,
+            type: BaseController.prototype.handleError,
             payload: error
         });
     }
@@ -43,7 +41,7 @@ export abstract class BaseData {
         result.subscribe(
             data => {
                 this.ngRedux.dispatch({
-                    type: type,
+                    type: type.toString(),
                     payload: data
                 });
             },

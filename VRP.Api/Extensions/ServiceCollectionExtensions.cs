@@ -29,7 +29,7 @@ namespace VRP.Api.Extensions {
         }
 
         public static IServiceCollection RegisterCustomServices(this IServiceCollection services) {
-            services.AddTransient<ApplicationDbContext>();
+            services.AddScoped<ApplicationDbContext>();
             return services;
         }
 

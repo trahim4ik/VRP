@@ -1,3 +1,45 @@
-<p>
-  user-page works!
-</p>
+<!-- <div class="page-header">
+  <h1>{{ !user?.id ? 'Add' : 'Edit' }} User Start 3.0</h1>
+</div>
+<mat-card>
+  <form (ngSubmit)="onSave()" #userForm="ngForm" *ngIf="user">
+      <div>
+          <mat-form-field>
+              <input id="email" name="email" matInput type="email" placeholder="Email" [(ngModel)]="user.email" required email>
+          </mat-form-field>
+      </div>
+      <div>
+          <mat-form-field>
+              <input id="firstName" name="firstName" matInput type="text" placeholder="First Name" [(ngModel)]="user.firstName" required>
+          </mat-form-field>
+      </div>
+      <div>
+          <mat-form-field>
+              <input id="lastName" name="lastName" matInput type="text" placeholder="Last Name" [(ngModel)]="user.lastName" required>
+          </mat-form-field>
+      </div>
+      <div>
+          <mat-checkbox id="isAdmin" name="isAdmin" [(ngModel)]="user.isAdmin" [disabled]="currentUser?.id === user.id">Admin</mat-checkbox>
+      </div>
+      <div>
+          <mat-form-field [ngClass]="{'mat-form-field-invalid': !passwordsValid() }">
+              <input id="newPassword" name="newPassword" matInput type="password" placeholder="Password" [(ngModel)]="newPassword" [attr.required]="!confirmPassword ? true : undefined" [attr.minlength]="!newPassword ? 6 : undefined">
+          </mat-form-field>
+      </div>
+      <div>
+          <mat-form-field [ngClass]="{'mat-form-field-invalid': !passwordsValid() }">
+              <input id="confirmPassword" name="confirmPassword" matInput type="password" placeholder="Confirm Password" [(ngModel)]="confirmPassword" [attr.required]="!newPassword ? true : undefined" [attr.minlength]="!confirmPassword ? 6 : undefined">
+          </mat-form-field>
+      </div>
+
+      <div>
+          <button type="button" color="accent" (click)="onBack()" mat-mini-fab>
+              <mat-icon>close</mat-icon>
+          </button>
+
+          <button type="submit" color="primary" [disabled]="!userForm.form.valid || !passwordsValid()" mat-mini-fab>
+              <mat-icon>check</mat-icon>
+          </button>
+      </div>
+  </form>
+</mat-card> -->

@@ -1,4 +1,6 @@
+import { UserModel } from '../core/models';
+
 export interface IAppState {
-    routes?: any;
+    user?: UserModel;
     feedback?: any;
 }

@@ -1,16 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using VRP.DAL;
 
 namespace VRP.Api.Extensions {
     public static class ApplicationBuilderExtensions {
-        public static IApplicationBuilder SetupMigrations(this IApplicationBuilder app) {
-            var context = app.ApplicationServices.GetService<ApplicationDbContext>();
-            context.Database.Migrate();
-            return app;
-        }
 
         public static IApplicationBuilder UseCustomSwaggerApi(this IApplicationBuilder app) {
 

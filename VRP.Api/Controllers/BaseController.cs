@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 
 namespace VRP.Api.Controllers {
-    [Authorize]
+    //[Authorize]
     public abstract class BaseController : Controller {
 
         protected IServiceProvider ServiceProvider;

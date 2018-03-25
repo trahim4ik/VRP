@@ -1,4 +1,6 @@
 * {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+
     a:hover,
     a:active,
     a:focus {
@@ -33,4 +35,10 @@ body {
 
 * {
     box-sizing: border-box;
+}
+
+
+h1 {
+    font-size: 32px;
+    font-weight: 400;
 }
