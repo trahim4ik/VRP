@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '../core/core.module';
 
+import { SharedModule  } from '../shared/shared.module';
 import { AppMaterialModule } from './../material/app-material.module';
 import { UsersRoutingModule } from './users-routing.module';
 
@@ -15,7 +16,8 @@ import { UsersNetwork } from './shared';
     CommonModule,
     CoreModule,
     AppMaterialModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    SharedModule
   ],
   declarations: [
     ManageUsersComponent,

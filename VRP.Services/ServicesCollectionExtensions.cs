@@ -11,6 +11,11 @@ namespace VRP.Services {
             services.AddAutoMapper();
 
             services.AddScoped(typeof(IBaseService<,>), typeof(BaseService<,>));
+
+            services.AddScoped(typeof(IDataSetItemService), typeof(DataSetItemService));
+            services.AddScoped(typeof(IDataSetService), typeof(DataSetService));
+            services.AddScoped(typeof(IRealtyService), typeof(RealtyService));
+
             services.AddScoped(typeof(IUserService), typeof(UserService));
 
             return services;

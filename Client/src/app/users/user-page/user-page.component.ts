@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { select } from '@angular-redux/store';
+import { select$, NgRedux } from '@angular-redux/store';
+import { UserModel } from '../../core/models';
+import { IAppState } from '../../store/app-state';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-user-page',
@@ -9,12 +12,15 @@ import { select } from '@angular-redux/store';
 })
 export class UserPageComponent implements OnInit {
 
-  @select() user;
+  user: UserModel;
 
-  constructor(protected fb: FormBuilder) { }
+  constructor(
+    protected fb: FormBuilder,
+    protected ngRedux: NgRedux<IAppState>
+  ) { }
 
   ngOnInit() {
-    console.log(this.user);
+    this.user = this.ngRedux.getState().user;
   }
 
 }

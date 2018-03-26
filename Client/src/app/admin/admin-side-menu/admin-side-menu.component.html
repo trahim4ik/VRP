@@ -1,8 +1,8 @@
-<mat-list>
+<mat-nav-list>
 
   <mat-list-item [routerLink]="navigation.link" routerLinkActive="active" *ngFor="let navigation of navigations">
     <mat-icon mat-list-icon>{{navigation.icon}}</mat-icon>
     <h4 mat-line>{{navigation.title}}</h4>
   </mat-list-item>
 
-</mat-list>
+</mat-nav-list>

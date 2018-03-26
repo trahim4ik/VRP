@@ -5,7 +5,7 @@ import { NgRedux } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 
 import { BaseController } from '../../core/network';
-import { SearchModel, UserModel } from '../../core/models';
+import { SearchModel, UserModel, SearchResultModel } from '../../core/models';
 
 export class UsersController extends BaseController {
 
@@ -17,7 +17,7 @@ export class UsersController extends BaseController {
         return super.httpGet(UsersController.prototype.get, `Users/${id}`, x => new UserModel(x));
     }
 
-    public search(model: SearchModel): Observable<any> {
-        return super.httpPost(UsersController.prototype.get, `Users/Search`, x => x, model);
+    public search(model: SearchModel): Observable<SearchResultModel<UserModel>> {
+        return super.httpPost(UsersController.prototype.search, `Users/Search`, x => new SearchResultModel<UserModel>(x), model);
     }
 }

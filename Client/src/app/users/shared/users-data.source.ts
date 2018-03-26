@@ -4,8 +4,8 @@ import { MatPaginator, MatSort } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 
 import { BaseDataSource } from '../../material/shared';
-import { SearchModel, UserModel } from '../../core/models';
-import { UsersResultModel, UsersNetwork } from '../shared';
+import { SearchModel, UserModel, SearchResultModel } from '../../core/models';
+import { UsersNetwork } from '../shared';
 
 
 export class UsersDataSource extends BaseDataSource<UserModel> {
@@ -25,7 +25,7 @@ export class UsersDataSource extends BaseDataSource<UserModel> {
         );
     }
 
-    loadData(): Observable<UsersResultModel> {
+    loadData(): Observable<SearchResultModel<UserModel>> {
         return this.network.usersController.search(new SearchModel({
             query: this.filter,
             limit: this.paginator.pageSize,

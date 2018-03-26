@@ -101,6 +101,85 @@ namespace VRP.DAL.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("VRP.Entities.DataSet", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime?>("DeleteDate");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(1000);
+
+                    b.Property<DateTime>("InsertDate")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<string>("Logo");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(100);
+
+                    b.Property<long>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("DataSets");
+                });
+
+            modelBuilder.Entity("VRP.Entities.DataSetItem", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long>("DataSetId");
+
+                    b.Property<DateTime?>("DeleteDate");
+
+                    b.Property<DateTime>("InsertDate")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DataSetId");
+
+                    b.ToTable("DataSetItems");
+                });
+
+            modelBuilder.Entity("VRP.Entities.Realty", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<double>("Area");
+
+                    b.Property<DateTime?>("DeleteDate");
+
+                    b.Property<DateTime>("InsertDate")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<double>("Latitude");
+
+                    b.Property<double>("Longitude");
+
+                    b.Property<double>("Price");
+
+                    b.Property<long>("UserId");
+
+                    b.Property<string>("ZipCode")
+                        .HasMaxLength(20);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Realties");
+                });
+
             modelBuilder.Entity("VRP.Entities.Role", b =>
                 {
                     b.Property<long>("Id")
@@ -226,6 +305,30 @@ namespace VRP.DAL.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<long>", b =>
                 {
                     b.HasOne("VRP.Entities.User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("VRP.Entities.DataSet", b =>
+                {
+                    b.HasOne("VRP.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("VRP.Entities.DataSetItem", b =>
+                {
+                    b.HasOne("VRP.Entities.DataSet", "DataSet")
+                        .WithMany("DataSetItems")
+                        .HasForeignKey("DataSetId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("VRP.Entities.Realty", b =>
+                {
+                    b.HasOne("VRP.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

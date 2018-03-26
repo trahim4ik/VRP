@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using VRP.Dtos;
+using VRP.Dtos.Core;
 using VRP.Services.Interfaces;
 
 namespace VRP.Api.Controllers {
@@ -22,7 +22,7 @@ namespace VRP.Api.Controllers {
 
         [HttpPost]
         [Route("Search")]
-        public IActionResult Search([FromBody]string value) {
+        public IActionResult Search([FromBody]SearchModel model) {
             return Ok(new UsersResult {
                 Total = _userService.Count(x => true),
                 Items = _userService.GetListNoTracking(x => true)
