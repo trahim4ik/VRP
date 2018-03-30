@@ -1,20 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FileDropModule } from 'ngx-file-drop';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { PageFooterComponent } from './page-footer/page-footer.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    FileDropModule
+    FileUploadModule
   ],
-  declarations: [PageNotFoundComponent, PageHeaderComponent, PageFooterComponent],
+  declarations: [
+    PageNotFoundComponent,
+    PageHeaderComponent,
+    PageFooterComponent,
+    FileUploadComponent
+  ],
   exports: [
-    FileDropModule,
+    FileUploadModule,
 
+    FileUploadComponent,
     PageNotFoundComponent,
     PageHeaderComponent,
     PageFooterComponent

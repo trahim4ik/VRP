@@ -1,3 +1,16 @@
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+//@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
+@import 'theme';
 @import 'reset';
+@import 'abstract';
+
+
+body {
+    background-color: $light;
+}
+
+.table-header {
+    .mat-form-field {
+        margin-right: 12px;
+    }
+}

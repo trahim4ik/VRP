@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { NgReduxModule } from '@angular-redux/store';

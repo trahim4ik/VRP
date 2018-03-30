@@ -1,8 +1,27 @@
 <mat-nav-list>
 
-  <mat-list-item [routerLink]="navigation.link" routerLinkActive="active" *ngFor="let navigation of navigations">
+  <h3 mat-subheader>Manage</h3>
+  <mat-list-item [routerLink]="navigation.link" routerLinkActive="active" *ngFor="let navigation of manageNavigations">
     <mat-icon mat-list-icon>{{navigation.icon}}</mat-icon>
     <h4 mat-line>{{navigation.title}}</h4>
   </mat-list-item>
+
+  <mat-divider></mat-divider>
+
+  <h3 mat-subheader>Settings</h3>
+
+  <mat-list-item [routerLink]="navigation.link" routerLinkActive="active" *ngFor="let navigation of settingsNavigations">
+    <mat-icon mat-list-icon>{{navigation.icon}}</mat-icon>
+    <h4 mat-line>{{navigation.title}}</h4>
+  </mat-list-item>
+
+  <h3 mat-subheader>View</h3>
+  <mat-list-item [routerLink]="navigation.link" routerLinkActive="active" *ngFor="let navigation of settingsNavigations">
+    <mat-icon mat-list-icon>{{navigation.icon}}</mat-icon>
+    <h4 mat-line>{{navigation.title}}</h4>
+  </mat-list-item>
+
+  <!-- <mat-divider></mat-divider>
+  <h3 mat-subheader>More</h3> -->
 
 </mat-nav-list>

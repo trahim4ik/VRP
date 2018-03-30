@@ -7,8 +7,13 @@
 
 .mat-drawer-container {
     flex: 1;
+    background-color: inherit;
 }
 
 .mat-sidenav {
-    width: 300px;
+    width: 200px;
+}
+
+.content {
+    padding: 24px;
 }

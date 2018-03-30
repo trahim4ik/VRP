@@ -8,10 +8,19 @@ import { NavigationModel } from '../../core/models';
 })
 export class AdminSideMenuComponent implements OnInit {
 
-  navigations: NavigationModel[] = [
-    new NavigationModel({ title: 'Home', link: './', icon: 'home' }),
+
+  mainNavigations: NavigationModel[] = [
+    new NavigationModel({ title: 'Home', link: './', icon: 'home' })
+  ];
+
+  settingsNavigations: NavigationModel[] = [
+    new NavigationModel({ title: 'Profile', link: './', icon: 'account_circle' })
+  ];
+
+  manageNavigations: NavigationModel[] = [
     new NavigationModel({ title: 'Users', link: './users', icon: 'supervisor_account' }),
-    new NavigationModel({ title: 'Realties', link: './realties', icon: 'location_city' })
+    new NavigationModel({ title: 'Realties', link: './realties', icon: 'location_city' }),
+    new NavigationModel({ title: 'Datasets', link: './datasets', icon: 'equalizer' })
   ];
 
   constructor() { }
