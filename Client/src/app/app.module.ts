@@ -10,7 +10,6 @@ import { LoadingBarHttpModule } from '@ngx-loading-bar/http';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppMaterialModule } from './material/app-material.module';
 import { StoreModule } from './store/store.module';
 
 import { AppComponent } from './app.component';
@@ -27,7 +26,6 @@ import { AppComponent } from './app.component';
     NgReduxModule,
     LoadingBarHttpModule,
     LoadingBarRouterModule,
-    AppMaterialModule,
     StoreModule,
     AppRoutingModule
   ],

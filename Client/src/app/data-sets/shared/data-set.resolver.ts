@@ -14,7 +14,6 @@ export class DataSetResolver implements Resolve<DataSetModel> {
 
     resolve(route: ActivatedRouteSnapshot): Observable<DataSetModel> | DataSetModel {
         const id = +route.params['id'];
-        return new DataSetModel({ description:'descr here',  name:'name' });
-        //return this.network.dataSetController.get(id);
+        return this.network.dataSetController.get(id);
     }
 }

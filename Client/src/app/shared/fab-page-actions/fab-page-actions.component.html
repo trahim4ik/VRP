@@ -1,3 +1,6 @@
-<p>
-  fab-page-actions works!
-</p>
+<button mat-fab color="accent" (click)="save.emit()" matTooltip="Save">
+  <mat-icon aria-label="Save Page form">check</mat-icon>
+</button>
+<button mat-fab color="warn" (click)="cancel.emit()" matTooltip="Cancel">
+  <mat-icon aria-label="Cancel Page form">clear</mat-icon>
+</button>

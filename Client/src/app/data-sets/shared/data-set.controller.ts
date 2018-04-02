@@ -22,4 +22,12 @@ export class DataSetController extends BaseController {
     public search(model: SearchModel): Observable<SearchResultModel<DataSetModel>> {
         return super.httpPost(DataSetController.prototype.search, `DataSet/Search`, x => new SearchResultModel<DataSetModel>(x), model);
     }
+
+    public create(model: DataSetModel): Observable<SearchResultModel<DataSetModel>> {
+        return super.httpPost(DataSetController.prototype.create, `DataSet/Save`, x => new DataSetModel(x), model);
+    }
+
+    public update(model: DataSetModel): Observable<SearchResultModel<DataSetModel>> {
+        return super.httpPut(DataSetController.prototype.update, `DataSet/Update`, x => new DataSetModel(x), model);
+    }
 }

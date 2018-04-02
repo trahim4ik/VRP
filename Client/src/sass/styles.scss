@@ -1,9 +1,6 @@
-//@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-
-@import 'theme';
-@import 'reset';
-@import 'abstract';
-
+@import "theme";
+@import "reset";
+@import "abstract";
 
 body {
     background-color: $light;
@@ -13,4 +10,10 @@ body {
     .mat-form-field {
         margin-right: 12px;
     }
+}
+
+fab-page-actions {
+    position: fixed;
+    right: 100px;
+    bottom: 100px;
 }

@@ -29,5 +29,17 @@ namespace VRP.Api.Controllers {
             });
         }
 
+        [HttpPost]
+        [Route("Create")]
+        public IActionResult Create([FromBody]DataSetModel model) {
+            return Ok(_dataSetService.Create(model));
+        }
+
+        [HttpPut]
+        [Route("Update")]
+        public IActionResult Update([FromBody]DataSetModel model) {
+            return Ok(_dataSetService.Update(model));
+        }
+
     }
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgRedux, select } from '@angular-redux/store';
+
 import { IAppState } from '../../store/app-state';
-import { DataSetModel } from '../shared';
+import { DataSetModel, DataSetsNetwork } from '../shared';
 
 @Component({
   selector: 'data-set-page',
@@ -14,11 +15,17 @@ export class DataSetPageComponent implements OnInit, OnDestroy {
   protected unsubscribe: Function;
   protected title: string;
 
-  constructor(protected ngRedux: NgRedux<IAppState>) { }
+  constructor(protected ngRedux: NgRedux<IAppState>, protected network: DataSetsNetwork) { }
 
   ngOnInit() {
     this.onStateChange(this.ngRedux.getState());
     this.unsubscribe = this.ngRedux.subscribe(this.onStateChange.bind(this));
+  }
+
+  ngOnDestroy(): void {
+    if (this.unsubscribe) {
+      this.unsubscribe();
+    }
   }
 
   protected onStateChange(state: IAppState): void {
@@ -26,10 +33,17 @@ export class DataSetPageComponent implements OnInit, OnDestroy {
     this.title = this.model && this.model.id ? 'Edit Dataset' : 'Create Dataset';
   }
 
-  ngOnDestroy(): void {
-    if (this.unsubscribe) {
-      this.unsubscribe();
+  protected onSave(): void {
+    if (this.model.id) {
+      this.network.dataSetController.update(this.model);
+    } else {
+      this.network.dataSetController.create(this.model);
     }
+
+  }
+
+  protected onCancel(): void {
+
   }
 
 }
