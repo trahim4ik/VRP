@@ -9,13 +9,18 @@
 .header {
     height: 100px;
     padding: 10px 16px;
-    background: #555;
+    background: $primary;
     color: #f1f1f1;
     z-index: 2;
 }
 
 .content {
-    padding: 16px;
+    color:#ddd;
+    background-color:$primary;
+    text-align:center;
+    padding:50px 80px;
+    text-align: justify;
+    position: relative;
 }
 
 .sticky {
@@ -66,7 +71,7 @@
 }
 
 .caption span.border {
-    background-color: #111;
+    background-color: $primary;
     color: #fff;
     padding: 18px;
     font-size: 25px;
@@ -78,6 +83,19 @@ h3 {
     text-transform: uppercase;
     font: 20px "Lato", sans-serif;
     color: #111;
+}
+
+.demo-content{
+    color: #777;
+    background-color:white;
+    text-align:center;
+    padding:50px 80px;
+    text-align: justify;
+
+    h3 {
+        text-align: center;
+    }
+
 }
 
 @media only screen and (max-device-width: 1024px) {

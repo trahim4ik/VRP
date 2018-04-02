@@ -1,0 +1,15 @@
+@import '~sass/abstract';
+
+:host {
+    @include flexbox;
+    @include flex-direction(row);
+    @include align-items(center);
+}
+
+button {
+    margin-right: 16px;
+}
+
+h1 {
+    @include flex(1);
+}

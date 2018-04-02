@@ -1,58 +1,30 @@
-<div class="page-header">
-  <h1>Create Dataset</h1>
-</div>
-
+<page-header [title]="title"></page-header>
 <mat-card class="dataset-content">
   <mat-tab-group class="demo-tab-group">
-    <mat-tab label="Tab 1">
-      <ng-template mat-tab-label>
-        <mat-icon>security</mat-icon> Basic Settings
-      </ng-template>
 
-      <div class="demo-tab-content">
-        <form (ngSubmit)="onSave()">
+    <mat-tab label="Basic Details">
+      <ng-template mat-tab-label>
+        <mat-icon>security</mat-icon>
+        <span>Basic Details</span>
+      </ng-template>
+      <basic-details [model]="model"></basic-details>
+    </mat-tab>
 
-          <app-file-upload [url]="' some url '"></app-file-upload>
-          <div>
-            <mat-form-field>
-              <input id="description" name="description" matInput type="text" placeholder="Description" [(ngModel)]="model.description"
-                required email>
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field>
-              <input id="name" name="name" matInput type="text" placeholder="Name" [(ngModel)]="model.name" required>
-            </mat-form-field>
-          </div>
-        </form>
-      </div>
-    </mat-tab>
-    <mat-tab label="Tab 4">
+    <mat-tab label="Columns Tab">
       <ng-template mat-tab-label>
-        <mat-icon>list</mat-icon> Configure Properties
+        <mat-icon>list</mat-icon>
+        <span>Properties</span>
       </ng-template>
-      <div class="demo-tab-content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis
-        vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur
-        felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum
-        enim, vel tempor sapien arcu a tellus.
-        <br />
-        <br /> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac
-        dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin
-        consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci
-        enim rutrum enim, vel tempor sapien arcu a tellus.
-      </div>
+      <data-set-properties [model]="model"></data-set-properties>
     </mat-tab>
-    <mat-tab label="Tab 2">
+
+    <mat-tab label="Attachments Tab">
       <ng-template mat-tab-label>
-        <mat-icon>attach_file</mat-icon> Upload Files
+        <mat-icon>attach_file</mat-icon>
+        <span>Upload Files</span>
       </ng-template>
-      <div class="demo-tab-content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis
-        vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur
-        felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum
-        enim, vel tempor sapien arcu a tellus.
-      </div>
+      <data-set-attachments [model]="model"></data-set-attachments>
     </mat-tab>
+
   </mat-tab-group>
 </mat-card>

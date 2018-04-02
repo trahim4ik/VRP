@@ -6,7 +6,7 @@ import { IAppState } from '../../store/app-state';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
-  selector: 'app-user-page',
+  selector: 'user-page',
   templateUrl: './user-page.component.html',
   styleUrls: ['./user-page.component.scss']
 })

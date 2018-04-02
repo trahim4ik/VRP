@@ -10,7 +10,6 @@ import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { UsersNetwork } from './shared';
 
-
 @NgModule({
   imports: [
     CommonModule,

@@ -3,15 +3,17 @@ import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 import { UsersNetwork } from './users.network';
+import { UserModel } from '../../core/models';
 
 @Injectable()
-export class UserResolver implements Resolve<any> {
+export class UserResolver implements Resolve<UserModel> {
 
     constructor(protected network: UsersNetwork) {
     }
 
-    resolve(route: ActivatedRouteSnapshot): Observable<any> | any {
+    resolve(route: ActivatedRouteSnapshot): Observable<UserModel> | UserModel {
         const id = +route.params['id'];
-        return this.network.usersController.get(id);
+        return new UserModel({});
+        //return this.network.usersController.get(id);
     }
 }

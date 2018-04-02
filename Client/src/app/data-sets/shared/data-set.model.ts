@@ -1,9 +1,7 @@
 export class DataSetModel {
-    area: number;
-    price: number;
-    latitude: number;
-    longitude: number;
-    zipCode: string;
+    id: number;
+    name: string;
+    description: string;
 
     public constructor(fields?: Partial<DataSetModel>) {
 

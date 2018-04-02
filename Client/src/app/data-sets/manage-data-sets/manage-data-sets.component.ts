@@ -9,7 +9,7 @@ import { PaginatorSizes, DefaultPageSize } from '../../core/constants';
 import { SearchModel } from '../../core/models';
 
 @Component({
-  selector: 'app-manage-data-sets',
+  selector: 'manage-data-sets',
   templateUrl: './manage-data-sets.component.html',
   styleUrls: ['./manage-data-sets.component.scss']
 })

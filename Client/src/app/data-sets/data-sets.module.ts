@@ -10,6 +10,10 @@ import { ManageDataSetsComponent } from './manage-data-sets/manage-data-sets.com
 import { DataSetItemsComponent } from './data-set-items/data-set-items.component';
 import { DataSetsNetwork } from './shared';
 import { DataSetPageComponent } from './data-set-page/data-set-page.component';
+import { BasicDetailsComponent } from './basic-details/basic-details.component';
+import { DataSetAttachmentsComponent } from './data-set-attachments/data-set-attachments.component';
+import { DataSetPropertiesComponent } from './data-set-properties/data-set-properties.component';
+import { DataSetInfoComponent } from './data-set-info/data-set-info.component';
 
 @NgModule({
   imports: [
@@ -22,7 +26,11 @@ import { DataSetPageComponent } from './data-set-page/data-set-page.component';
   declarations: [
     DataSetItemsComponent,
     DataSetPageComponent,
-    ManageDataSetsComponent
+    ManageDataSetsComponent,
+    BasicDetailsComponent,
+    DataSetAttachmentsComponent,
+    DataSetPropertiesComponent,
+    DataSetInfoComponent
   ],
   providers: [
     DataSetsNetwork

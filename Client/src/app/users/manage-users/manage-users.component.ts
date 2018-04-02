@@ -7,7 +7,6 @@ import { Observable } from 'rxjs/Observable';
 import { UsersDataSource, UsersNetwork } from '../shared';
 import { SearchModel } from '../../core/models';
 import { DefaultPageSize, PaginatorSizes } from '../../core/constants';
-import { FileSystemDirectoryEntry, UploadFile, FileSystemFileEntry, UploadEvent } from 'ngx-file-drop';
 
 @Component({
   selector: 'app-manage-users',
@@ -46,7 +45,7 @@ export class ManageUsersComponent implements OnInit {
   }
 
   protected onEdit(id: number): void {
-    this.router.navigate(['users/', id]);
+    this.router.navigate(['/admin/users/', id]);
   }
 
 }
