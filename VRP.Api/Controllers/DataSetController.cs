@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using VRP.Api.Extensions;
 using VRP.Dtos;
 using VRP.Dtos.Core;
 using VRP.Services.Interfaces;
@@ -32,6 +33,7 @@ namespace VRP.Api.Controllers {
         [HttpPost]
         [Route("Create")]
         public IActionResult Create([FromBody]DataSetModel model) {
+            model.UserId = User.GetId();
             return Ok(_dataSetService.Create(model));
         }
 

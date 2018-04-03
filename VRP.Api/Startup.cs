@@ -25,11 +25,13 @@ namespace VRP.Api {
 
             services.AddCustomIdentity();
 
-            services.RegisterCustomServices();
+            services.AddCustomServices();
 
             services.AddRepositories();
 
             services.AddApplicationServices();
+
+            services.AddCustomFilters();
 
             services.AddAuthorization()
                 .AddAuthentication()

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using VRP.Api.Attributes;
 using VRP.DAL;
 using VRP.Entities;
 
@@ -28,8 +29,13 @@ namespace VRP.Api.Extensions {
             return services;
         }
 
-        public static IServiceCollection RegisterCustomServices(this IServiceCollection services) {
+        public static IServiceCollection AddCustomServices(this IServiceCollection services) {
             services.AddScoped<ApplicationDbContext>();
+            return services;
+        }
+
+        public static IServiceCollection AddCustomFilters(this IServiceCollection services) {
+            services.AddScoped<ValidateMimeMultipartContentFilter>();
             return services;
         }
 
