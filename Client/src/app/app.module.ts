@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
+import { HttpModule, XHRBackend } from '@angular/http';
 import { NgReduxModule } from '@angular-redux/store';
 import { LoadingBarHttpModule } from '@ngx-loading-bar/http';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
@@ -13,6 +13,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { StoreModule } from './store/store.module';
 
 import { AppComponent } from './app.component';
+import { AuthenticateXHRBackend } from './core/network/auth-xhr.backend';
+import { CoreModule } from './core/core.module';
+
 
 @NgModule({
   declarations: [
@@ -27,9 +30,12 @@ import { AppComponent } from './app.component';
     LoadingBarHttpModule,
     LoadingBarRouterModule,
     StoreModule,
+    CoreModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    { provide: XHRBackend, useClass: AuthenticateXHRBackend }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

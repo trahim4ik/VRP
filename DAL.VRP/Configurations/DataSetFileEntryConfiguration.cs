@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using VRP.Core.Enums;
 using VRP.Entities;
 
 namespace VRP.DAL.Configurations {
@@ -16,6 +17,10 @@ namespace VRP.DAL.Configurations {
                 .HasOne(pt => pt.FileEntry)
                 .WithMany(p => p.DataSetFileEntries)
                 .HasForeignKey(pt => pt.FileEntryId);
+
+            builder
+                .Property(x => x.DataSetType)
+                .HasDefaultValue(DataSetType.Train);
         }
     }
 }

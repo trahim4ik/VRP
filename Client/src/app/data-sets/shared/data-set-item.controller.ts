@@ -11,19 +11,18 @@ import { IAppState } from '../../store/app-state';
 
 export class DataSetItemController extends BaseController {
 
+
+    public static LOADED_DATASET_ITEM = 'LOADED_DATASET_ITEM';
+
     constructor(http: Http, protected ngRedux: NgRedux<IAppState>) {
         super(http, ngRedux);
     }
 
     public get(id: number): Observable<DataSetItemModel> {
-        return super.httpGet(DataSetItemController.prototype.get, `DataSetItem/${id}`, x => new DataSetItemModel(x));
+        return super.httpGet(DataSetItemController.LOADED_DATASET_ITEM, `DataSetItem/${id}`, x => new DataSetItemModel(x));
     }
 
     public search(model: SearchModel): Observable<SearchResultModel<DataSetItemModel>> {
-        return super.httpPost(
-            DataSetItemController.prototype.search,
-            `DataSetItem/Search`,
-            x => new SearchResultModel<DataSetItemModel>(x), model
-        );
+        return super.httpPost(null, `DataSetItem/Search`, x => new SearchResultModel<DataSetItemModel>(x), model);
     }
 }

@@ -7,7 +7,9 @@ using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
 using VRP.DAL;
 using System;
+using Microsoft.AspNetCore.Http.Features;
 using VRP.Api.Extensions;
+using VRP.Core.Options;
 using VRP.Services;
 
 namespace VRP.Api {
@@ -20,6 +22,8 @@ namespace VRP.Api {
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
+
+            services.Configure<FileSystemOptions>(Configuration.GetSection("FileSystemOptions"));
 
             services.AddCustomDbContext(Configuration);
 
@@ -36,6 +40,13 @@ namespace VRP.Api {
             services.AddAuthorization()
                 .AddAuthentication()
                 .AddCookie();
+
+            services.Configure<FormOptions>(
+                options => {
+                    options.MultipartBodyLengthLimit = 80000000;
+                    options.ValueLengthLimit = int.MaxValue;
+                    options.MultipartHeadersLengthLimit = int.MaxValue;
+                });
 
             services.AddMvc()
                 .AddJsonOptions(options => {
@@ -63,7 +74,7 @@ namespace VRP.Api {
 
             app.UseAuthentication();
 
-            DefaultFilesOptions options = new DefaultFilesOptions();
+            var options = new DefaultFilesOptions();
             options.DefaultFileNames.Clear();
             options.DefaultFileNames.Add("index.html");
 

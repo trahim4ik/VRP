@@ -10,15 +10,17 @@ import { RealtyModel } from './realty.model';
 
 export class RealtyController extends BaseController {
 
+    public static LOADED_REALTY = 'LOADED_REALTY';
+
     constructor(http: Http, protected ngRedux: NgRedux<any>) {
         super(http, ngRedux);
     }
 
     public get(id: number): Observable<RealtyModel> {
-        return super.httpGet(RealtyController.prototype.get, `Realty/${id}`, x => new RealtyModel(x));
+        return super.httpGet(RealtyController.LOADED_REALTY, `Realty/${id}`, x => new RealtyModel(x));
     }
 
     public search(model: SearchModel): Observable<SearchResultModel<RealtyModel>> {
-        return super.httpPost(RealtyController.prototype.get, `Realty/Search`, x => new SearchResultModel<RealtyModel>(x), model);
+        return super.httpPost(null, `Realty/Search`, x => new SearchResultModel<RealtyModel>(x), model);
     }
 }

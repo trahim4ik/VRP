@@ -6,8 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using VRP.Dtos;
 using VRP.Entities;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace VRP.Api.Controllers {
     [Route("api/[controller]")]
     public class AccountController : Controller {
@@ -20,9 +18,8 @@ namespace VRP.Api.Controllers {
             _signInManager = signInManager;
         }
 
-        //
-        // POST: /Account/Register
         [HttpPost]
+        [Route("Register")]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model) {
@@ -38,8 +35,8 @@ namespace VRP.Api.Controllers {
         }
 
         [HttpPost]
+        [Route("Login")]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login([FromBody]LoginViewModel model) {
 
             if (!ModelState.IsValid) {
@@ -69,7 +66,6 @@ namespace VRP.Api.Controllers {
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> LogOut() {
             await _signInManager.SignOutAsync();
             return Ok();

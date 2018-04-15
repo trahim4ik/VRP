@@ -1,0 +1,22 @@
+@import '~sass/abstract';
+
+:host {
+    display: block;
+}
+
+h3 {
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.attachments-section {
+    @include flexbox;
+    @include flex-direction(row);
+    @include flex-wrap(wrap);
+    padding: 5px;
+
+    attachment-tile {
+        margin: 5px;
+        max-width: 500px;
+    }
+}

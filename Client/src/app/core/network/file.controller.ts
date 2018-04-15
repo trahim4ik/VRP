@@ -8,11 +8,13 @@ import { BaseController } from './base.controller';
 
 export class FileController extends BaseController {
 
+    public static LOADED_FILE = 'LOADED_FILE';
+
     constructor(http: Http, protected ngRedux: NgRedux<any>) {
         super(http, ngRedux);
     }
 
     public get(id: number): Observable<any> {
-        return super.httpGet(FileController.prototype.get, `File/Get/${id}`, x => x);
+        return super.httpGet(FileController.LOADED_FILE, `File/Get/${id}`, x => x);
     }
 }

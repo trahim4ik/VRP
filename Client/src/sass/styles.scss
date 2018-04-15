@@ -12,8 +12,13 @@ body {
     }
 }
 
+button {
+    text-transform: uppercase;
+}
+
 fab-page-actions {
     position: fixed;
     right: 100px;
     bottom: 100px;
+    z-index: 10;
 }

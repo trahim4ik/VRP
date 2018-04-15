@@ -1,2 +1,13 @@
+@import "~sass/abstract";
 
-.mat-list-item {}
+:host {
+    @include flexbox;
+    @include flex-direction(column);
+
+    height: 100%;
+    width: 100%;
+}
+
+.spacer {
+    @include flex(1);
+}

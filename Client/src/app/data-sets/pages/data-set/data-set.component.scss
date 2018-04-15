@@ -1,0 +1,29 @@
+@import "~sass/abstract";
+
+:host {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100%;
+
+    /deep/ {
+        
+        .mat-tab-label-content {
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+
+            span {
+                margin-left: 8px;
+            }
+        }
+
+        .mat-tab-body {
+            padding-top: 24px;
+        }
+    }
+}
+
+.dataset-content {
+    height: 100%;
+}

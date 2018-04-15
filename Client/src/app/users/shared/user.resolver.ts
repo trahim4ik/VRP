@@ -13,7 +13,6 @@ export class UserResolver implements Resolve<UserModel> {
 
     resolve(route: ActivatedRouteSnapshot): Observable<UserModel> | UserModel {
         const id = +route.params['id'];
-        return new UserModel({});
-        //return this.network.usersController.get(id);
+        return this.network.usersController.get(id);
     }
 }

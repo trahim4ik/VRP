@@ -2,13 +2,17 @@ import { Reducer } from 'redux';
 import { FluxStandardAction } from 'flux-standard-action';
 
 import { DataSetController } from './data-set.controller';
-import { DataSetModel } from '.';
+import { DataSetModel, DataSetActions } from '.';
 
 export const dataSetReducer: Reducer<DataSetModel> = (
     state: DataSetModel = null, action: FluxStandardAction<DataSetModel>): DataSetModel => {
     switch (action.type) {
-        case DataSetController.prototype.get.toString():
+        case DataSetController.LOADED_DATASET:
             return Object.assign({}, state, action.payload);
+        case DataSetActions.UPLOAD_FILE:
+            const dataSet = Object.assign({}, state);
+            dataSet.fileEntries.push(action.payload);
+            return dataSet;
         default:
             return state;
     }

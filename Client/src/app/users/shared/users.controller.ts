@@ -9,15 +9,17 @@ import { SearchModel, UserModel, SearchResultModel } from '../../core/models';
 
 export class UsersController extends BaseController {
 
+    public static LOADED_USED = 'LOADED_USED';
+
     constructor(http: Http, protected ngRedux: NgRedux<any>) {
         super(http, ngRedux);
     }
 
     public get(id: number): Observable<UserModel> {
-        return super.httpGet(UsersController.prototype.get, `Users/${id}`, x => new UserModel(x));
+        return super.httpGet(UsersController.LOADED_USED, `Users/${id}`, x => new UserModel(x));
     }
 
     public search(model: SearchModel): Observable<SearchResultModel<UserModel>> {
-        return super.httpPost(UsersController.prototype.search, `Users/Search`, x => new SearchResultModel<UserModel>(x), model);
+        return super.httpPost(null, `Users/Search`, x => new SearchResultModel<UserModel>(x), model);
     }
 }

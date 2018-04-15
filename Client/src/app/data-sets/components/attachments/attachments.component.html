@@ -1,0 +1,7 @@
+<file-upload [url]="getUrl()" (uploaded)="actions.uploadFile($event)"></file-upload>
+
+<h3>Files</h3>
+
+<div class="attachments-section">
+    <attachment-tile [attachment]="attachment" *ngFor="let attachment of attachments"></attachment-tile>
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+
+import { BaseNetwork } from '../../core/network';
 
 @Component({
   selector: 'app-login-page',
@@ -8,20 +9,16 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 })
 export class LoginPageComponent implements OnInit {
 
-  loginForm: FormGroup;
+  model: any = {};
 
-  constructor(protected fb: FormBuilder) {
+  constructor(protected network: BaseNetwork) {
   }
 
-  ngOnInit() {
-    this.createForm();
+  ngOnInit(): void {
   }
 
-  protected createForm() {
-    this.loginForm = this.fb.group({
-      login: '',
-      password: '',
-    });
+  onLogin(): void {
+    this.network.authotizationController.login(this.model);
   }
 
 }

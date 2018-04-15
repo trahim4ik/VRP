@@ -3,12 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { UserResolver } from './shared';
 
-import { ManageUsersComponent } from './manage-users/manage-users.component';
-import { UserPageComponent } from './user-page/user-page.component';
+import { UserComponent, UsersComponent } from './pages';
 
 const routes: Routes = [
-  { path: '', component: ManageUsersComponent },
-  { path: ':id', component: UserPageComponent, resolve: { users: UserResolver } }
+  { path: '', component: UsersComponent },
+  { path: ':id', component: UserComponent, resolve: { users: UserResolver } }
 ];
 
 @NgModule({

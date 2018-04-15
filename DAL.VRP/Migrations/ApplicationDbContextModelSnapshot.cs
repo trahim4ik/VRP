@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
+using VRP.Core.Enums;
 using VRP.DAL;
 
 namespace VRP.DAL.Migrations
@@ -135,6 +136,10 @@ namespace VRP.DAL.Migrations
 
                     b.Property<long>("DataSetId");
 
+                    b.Property<int>("DataSetType")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(0);
+
                     b.HasKey("FileEntryId", "DataSetId");
 
                     b.HasIndex("DataSetId");
@@ -147,13 +152,111 @@ namespace VRP.DAL.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<double?>("BasketballDistance");
+
+                    b.Property<double?>("BigMarketDistance");
+
+                    b.Property<double?>("BusTerminalDistance");
+
+                    b.Property<double?>("CarMetroDistance");
+
+                    b.Property<double?>("CarMetroMin");
+
                     b.Property<long>("DataSetId");
 
+                    b.Property<int>("DataSetType")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(0);
+
                     b.Property<DateTime?>("DeleteDate");
+
+                    b.Property<double?>("DetentionFacilityDistance");
+
+                    b.Property<string>("District");
+
+                    b.Property<int?>("ElderAll");
+
+                    b.Property<int?>("ElderFemale");
+
+                    b.Property<int?>("ElderMale");
+
+                    b.Property<int?>("Female");
+
+                    b.Property<double?>("FitnessDistance");
+
+                    b.Property<int?>("Floor");
+
+                    b.Property<double?>("FullArea");
+
+                    b.Property<double?>("GreenZoneDistance");
+
+                    b.Property<double?>("HospiceDistance");
+
+                    b.Property<double?>("IcePalaceDistance");
+
+                    b.Property<double?>("IndustrialZoneDistance");
 
                     b.Property<DateTime>("InsertDate")
                         .ValueGeneratedOnAdd()
                         .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<double?>("KindergartenDistance");
+
+                    b.Property<double?>("KitchenArea");
+
+                    b.Property<double?>("LifeArea");
+
+                    b.Property<int?>("Male");
+
+                    b.Property<double?>("MarketDistance");
+
+                    b.Property<int>("Material");
+
+                    b.Property<int?>("MaxFloor");
+
+                    b.Property<double?>("MetroDistance");
+
+                    b.Property<double?>("ParkDistance");
+
+                    b.Property<int?>("Population");
+
+                    b.Property<double?>("Price");
+
+                    b.Property<string>("ProductType");
+
+                    b.Property<double?>("PublicHealthcareDistance");
+
+                    b.Property<int?>("Rooms");
+
+                    b.Property<DateTime?>("SaleDate");
+
+                    b.Property<double?>("SchoolDistance");
+
+                    b.Property<double?>("StadiumDistance");
+
+                    b.Property<int?>("State");
+
+                    b.Property<double?>("SwimmingPoolDistance");
+
+                    b.Property<double?>("TimeToMetro");
+
+                    b.Property<double?>("TrainStationDistance");
+
+                    b.Property<double?>("UniversityDistance");
+
+                    b.Property<int?>("WorkAll");
+
+                    b.Property<int?>("WorkFemale");
+
+                    b.Property<int?>("WorkMale");
+
+                    b.Property<int?>("YearBuilt");
+
+                    b.Property<int?>("YoungAll");
+
+                    b.Property<int?>("YoungFemale");
+
+                    b.Property<int?>("YoungMale");
 
                     b.HasKey("Id");
 
@@ -173,11 +276,17 @@ namespace VRP.DAL.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<string>("Extension");
+
                     b.Property<string>("FileName");
 
                     b.Property<DateTime>("InsertDate")
                         .ValueGeneratedOnAdd()
                         .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<long>("Length");
+
+                    b.Property<string>("Name");
 
                     b.HasKey("Id");
 

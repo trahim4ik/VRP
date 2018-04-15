@@ -1,12 +1,18 @@
-<form [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate>
+<mat-card>
 
-  <mat-form-field>
-    <input matInput  formControlName="login" name="login" placeholder="Username" type="text">
-  </mat-form-field>
+  <form (ngSubmit)="onLogin()" novalidate>
 
-  <mat-form-field>
-    <input matInput  formControlName="password" name="password" placeholder="Password" [type]="hide ? 'password' : 'text'">
-    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput name="login" placeholder="Username" type="text" [(ngModel)]="model.email">
+    </mat-form-field>
 
-</form>
+    <mat-form-field>
+      <input matInput [(ngModel)]="model.password" name="password" placeholder="Password" [type]="hide ? 'password' : 'text'">
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+    </mat-form-field>
+
+    <button mat-raised-button color="accent" type="submit">Login</button>
+
+  </form>
+
+</mat-card>

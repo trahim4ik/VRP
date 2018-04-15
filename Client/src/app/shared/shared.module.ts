@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FileUploadModule } from 'ng2-file-upload';
 
-
 import { AppMaterialModule } from '../material/app-material.module';
-import { FabPageActionsComponent } from './fab-page-actions/fab-page-actions.component';
-import { FileUploadComponent } from './file-upload/file-upload.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { PageHeaderComponent } from './page-header/page-header.component';
-import { PageFooterComponent } from './page-footer/page-footer.component';
+import {
+  ConfirmDialogComponent,
+  FabPageActionsComponent,
+  FileUploadComponent,
+  PageHeaderComponent
+} from './components';
 
 @NgModule({
   imports: [
@@ -17,21 +17,22 @@ import { PageFooterComponent } from './page-footer/page-footer.component';
     FileUploadModule
   ],
   declarations: [
+    ConfirmDialogComponent,
     FileUploadComponent,
     FabPageActionsComponent,
-    PageNotFoundComponent,
-    PageHeaderComponent,
-    PageFooterComponent
+    PageHeaderComponent
   ],
   exports: [
     FileUploadModule,
     AppMaterialModule,
 
+    ConfirmDialogComponent,
     FabPageActionsComponent,
     FileUploadComponent,
-    PageNotFoundComponent,
-    PageHeaderComponent,
-    PageFooterComponent
+    PageHeaderComponent
+  ],
+  entryComponents: [
+    ConfirmDialogComponent
   ]
 })
 export class SharedModule { }

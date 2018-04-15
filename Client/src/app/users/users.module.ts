@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '../core/core.module';
 
-import { SharedModule  } from '../shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 import { AppMaterialModule } from './../material/app-material.module';
 import { UsersRoutingModule } from './users-routing.module';
 
-import { ManageUsersComponent } from './manage-users/manage-users.component';
-import { UserPageComponent } from './user-page/user-page.component';
+import { UserComponent, UsersComponent } from './pages';
 import { UsersNetwork } from './shared';
 
 @NgModule({
@@ -19,8 +18,8 @@ import { UsersNetwork } from './shared';
     SharedModule
   ],
   declarations: [
-    ManageUsersComponent,
-    UserPageComponent
+    UserComponent,
+    UsersComponent
   ],
   providers: [
     UsersNetwork

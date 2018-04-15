@@ -15,89 +15,72 @@ export abstract class BaseController {
         protected http: Http,
         protected ngRedux: NgRedux<any>
     ) {
-        const props = {};
-        for (const name in (<any>this).__proto__) {
-            if ((<any>this).__proto__.hasOwnProperty(name)) {
-                props[this[name]] = `${(<any>this).__proto__.constructor.name}.${name}`;
-            }
-        }
-        console.log(props);
     }
 
     public handleError(error: any) {
         console.error((error._body) ? error._body : error.status ? `${error.status} - ${error.statusText}` : 'Server error');
 
-        this.ngRedux.dispatch({
-            type: BaseController.prototype.handleError,
-            payload: error
-        });
+        this.ngRedux.dispatch({ type: BaseController.prototype.handleError, payload: error });
     }
 
-    protected httpGet<T>(type: Function, url: string, ctor: TypeConstructor<T>): Observable<any> {
+    protected httpGet<T>(type: string, url: string, ctor: TypeConstructor<T>): Observable<any> {
         const result: Observable<any> = this.http
             .get(this.apiRelativePath + url)
             .map((res: Response) => this.mapType<T>(res, ctor))
             .share();
         result.subscribe(
             data => {
-                this.ngRedux.dispatch({
-                    type: type.toString(),
-                    payload: data
-                });
+                if (type) {
+                    this.ngRedux.dispatch({ type: type, payload: data });
+                }
             },
             this.handleError.bind(this)
         );
         return result;
     }
 
-    protected httpPost<T>(type: Function, url: string, ctor: TypeConstructor<T>, data: any = null): Observable<any> {
+    protected httpPost<T>(type: string, url: string, ctor: TypeConstructor<T>, data: any = null): Observable<any> {
         const result: Observable<any> = this.http
             .post(this.apiRelativePath + url, data)
             .map((res: Response) => this.mapType<T>(res, ctor))
             .share();
         result.subscribe(
             d => {
-                this.ngRedux.dispatch({
-                    type: type,
-                    payload: d
-                });
+                if (type) {
+                    this.ngRedux.dispatch({ type: type, payload: d });
+                }
             },
             this.handleError.bind(this)
         );
         return result;
     }
 
-    protected httpPut<T>(type: Function, url: string, ctor: TypeConstructor<T>, data: any = null): Observable<any> {
+    protected httpPut<T>(type: string, url: string, ctor: TypeConstructor<T>, data: any = null): Observable<any> {
         const result: Observable<any> = this.http
             .put(this.apiRelativePath + url, data)
             .map((res: Response) => this.mapType<T>(res, ctor))
             .share();
         result.subscribe(
             d => {
-                this.ngRedux.dispatch({
-                    type: type,
-                    payload: d
-                });
+                if (type) {
+                    this.ngRedux.dispatch({ type: type, payload: d });
+                }
             },
             this.handleError.bind(this)
         );
         return result;
     }
 
-    protected httpDelete<T>(type: Function, url: string, id: number | number[] | null, ctor: TypeConstructor<T>): Observable<any> {
+    protected httpDelete<T>(type: string, url: string, id: number | number[] | null, ctor: TypeConstructor<T>): Observable<any> {
         const result: Observable<any> = this.http
             .delete(this.apiRelativePath + url + '/' + id)
             .map((res: Response) => this.mapType<T>(res, ctor))
             .share();
         result.subscribe(
             data => {
-                this.ngRedux.dispatch({
-                    type: type,
-                    payload: {
-                        id: id,
-                        data: data
-                    }
-                });
+                if (type) {
+                    this.ngRedux.dispatch({ type: type, payload: { id: id, data: data } });
+                }
             },
             this.handleError.bind(this)
         );
@@ -115,7 +98,7 @@ export abstract class BaseController {
         return ctor(val);
     }
 
-    protected downloadFile(type: Function, url: string): Observable<any> {
+    protected downloadFile(type: string, url: string): Observable<any> {
         const result: Observable<any> = this.http
             .get(this.apiRelativePath + url, { responseType: ResponseContentType.Blob })
             .map(res => res.blob())

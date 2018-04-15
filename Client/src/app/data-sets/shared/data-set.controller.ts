@@ -11,23 +11,29 @@ import { IAppState } from '../../store/app-state';
 
 export class DataSetController extends BaseController {
 
+    public static LOADED_DATASET = 'LOADED_DATASET';
+    public static CREATED_DATASET = 'CREATED_DATASET';
+    public static UPDATED_DATASET = 'UPDATED_DATASET';
+    public static DELETED_DATASET = 'DELETED_DATASET';
+    public static LOADED_DATASETS = 'LOADED_DATASETS';
+
     constructor(http: Http, protected ngRedux: NgRedux<IAppState>) {
         super(http, ngRedux);
     }
 
     public get(id: number): Observable<DataSetModel> {
-        return super.httpGet(DataSetController.prototype.get, `DataSet/${id}`, x => new DataSetModel(x));
+        return super.httpGet(DataSetController.LOADED_DATASET, `DataSet/${id}`, x => new DataSetModel(x));
     }
 
     public search(model: SearchModel): Observable<SearchResultModel<DataSetModel>> {
-        return super.httpPost(DataSetController.prototype.search, `DataSet/Search`, x => new SearchResultModel<DataSetModel>(x), model);
+        return super.httpPost(null, `DataSet/Search`, x => new SearchResultModel<DataSetModel>(x), model);
     }
 
     public create(model: DataSetModel): Observable<SearchResultModel<DataSetModel>> {
-        return super.httpPost(DataSetController.prototype.create, `DataSet/Create`, x => new DataSetModel(x), model);
+        return super.httpPost(DataSetController.CREATED_DATASET, `DataSet/Create`, x => new DataSetModel(x), model);
     }
 
     public update(model: DataSetModel): Observable<SearchResultModel<DataSetModel>> {
-        return super.httpPut(DataSetController.prototype.update, `DataSet/Update`, x => new DataSetModel(x), model);
+        return super.httpPut(DataSetController.UPDATED_DATASET, `DataSet/Update`, x => new DataSetModel(x), model);
     }
 }

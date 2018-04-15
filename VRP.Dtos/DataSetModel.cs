@@ -12,5 +12,6 @@ namespace VRP.Dtos {
         public string Description { get; set; }
         public long UserId { get; set; }
         public ICollection<DataSetItemModel> DataSetItems { get; set; }
+        public ICollection<FileEntryModel> FileEntries { get; set; }
     }
 }

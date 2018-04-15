@@ -1,0 +1,15 @@
+<form (ngSubmit)="onSave()">
+
+  <mat-form-field>
+    <input id="name" name="name" matInput type="text" placeholder="Name" [(ngModel)]="model.name" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input id="description" name="description" matInput type="text" placeholder="Description" [(ngModel)]="model.description"
+      required>
+  </mat-form-field>
+
+</form>
+
+
+

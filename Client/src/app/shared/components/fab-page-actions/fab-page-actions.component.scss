@@ -1,0 +1,9 @@
+@import '~sass/abstract';
+
+:host {
+    @include flexbox;
+}
+
+button:not(:last-child) {
+    margin-right: 8px;
+}

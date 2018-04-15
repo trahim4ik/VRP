@@ -1,7 +1,12 @@
 export class DataSetModel {
-    id: number;
-    name: string;
-    description: string;
+    public id: number;
+    public name: string;
+    public description: string;
+    public insertDate: Date;
+    public deleteDate: Date;
+    public logo: string;
+    public userId: number;
+    public fileEntries: any[];
 
     public constructor(fields?: Partial<DataSetModel>) {
 

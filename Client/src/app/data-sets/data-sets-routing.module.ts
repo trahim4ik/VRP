@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ManageDataSetsComponent } from './manage-data-sets/manage-data-sets.component';
-import { DataSetPageComponent } from './data-set-page/data-set-page.component';
+import { DataSetComponent, DataSetsComponent } from './pages';
 import { DataSetResolver } from './shared';
 
 const routes: Routes = [
-  { path: '', component: ManageDataSetsComponent },
-  { path: ':id', component: DataSetPageComponent, resolve: { dataSet: DataSetResolver } }
+  { path: '', component: DataSetsComponent },
+  { path: ':id', component: DataSetComponent, resolve: { dataSet: DataSetResolver } }
 ];
 
 @NgModule({
