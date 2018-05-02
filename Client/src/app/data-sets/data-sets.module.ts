@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LoadingBarHttpModule } from '@ngx-loading-bar/http';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { SharedModule } from '../shared/shared.module';
 import { AppMaterialModule } from './../material/app-material.module';
@@ -28,6 +29,7 @@ import {
     AppMaterialModule,
     LoadingBarHttpModule,
     LoadingBarRouterModule,
+    InfiniteScrollModule,
     DataSetsRoutingModule
   ],
   declarations: [

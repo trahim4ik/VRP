@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using VRP.Core.Enums;
 using VRP.DAL.Core;
+using VRP.Dtos;
 using VRP.Entities;
 using VRP.Services.Interfaces;
 
@@ -19,6 +20,11 @@ namespace VRP.Api.Controllers {
         [HttpGet("{id}")]
         public IActionResult Get(long id) {
             return Ok(_dataSetItemService.GetSingleNoTracking(x => x.Id == id));
+        }
+
+        [HttpPost("Search")]
+        public IActionResult Search([FromBody]DataSetItemSearchModel model) {
+            return Ok(_dataSetItemService.Search(model).Items);
         }
 
         [HttpGet("Train/{dataSetId}")]

@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgRedux, select } from '@angular-redux/store';
 
 import { IAppState } from '../../../store/app-state';
-import { DataSetModel, DataSetsNetwork, DataSetItemModel } from '../../shared';
+import { DataSetModel, DataSetsNetwork, DataSetItemModel, DataSetItemSearchModel } from '../../shared';
 
 @Component({
   selector: 'data-set-page',
@@ -12,7 +12,8 @@ import { DataSetModel, DataSetsNetwork, DataSetItemModel } from '../../shared';
 export class DataSetComponent implements OnInit, OnDestroy {
 
   protected model: DataSetModel;
-  protected datasetItems: DataSetItemModel[];
+  protected dataSetItems: DataSetItemModel[];
+  protected dataSetItemsSearch: DataSetItemSearchModel;
   protected unsubscribe: Function;
   protected title: string;
 
@@ -20,7 +21,7 @@ export class DataSetComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.onStateChange(this.ngRedux.getState());
-    this.unsubscribe = this.ngRedux.subscribe(this.onStateChange.bind(this));
+    this.unsubscribe = this.ngRedux.subscribe(() => this.onStateChange(this.ngRedux.getState()));
   }
 
   ngOnDestroy(): void {
@@ -31,7 +32,8 @@ export class DataSetComponent implements OnInit, OnDestroy {
 
   protected onStateChange(state: IAppState): void {
     this.model = state.dataSet || new DataSetModel();
-    this.datasetItems = state.dataSetItems || [];
+    this.dataSetItems = state.dataSetItems || [];
+    this.dataSetItemsSearch = state.dataSetItemsSearch;
     this.title = this.model && this.model.id ? 'Edit Dataset' : 'Create Dataset';
   }
 
@@ -46,6 +48,14 @@ export class DataSetComponent implements OnInit, OnDestroy {
 
   protected onCancel(): void {
 
+  }
+
+  protected onSearchDataSetItems(): void {
+    this.network.dataSetItemController.search(this.dataSetItemsSearch);
+  }
+
+  protected onLazyDataSetItems(): void {
+    this.network.dataSetItemController.lazy(this.dataSetItemsSearch);
   }
 
 }

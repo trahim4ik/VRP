@@ -5,15 +5,19 @@ import { Observable } from 'rxjs/Observable';
 
 import { DataSetItemModel } from '../models';
 import { DataSetsNetwork } from '../network';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from '../../../store/app-state';
 
 @Injectable()
 export class DataSetItemsResolver implements Resolve<DataSetItemModel[]> {
 
-    constructor(protected network: DataSetsNetwork) {
+    constructor(protected network: DataSetsNetwork, protected ngRedux: NgRedux<IAppState>) {
     }
 
     resolve(route: ActivatedRouteSnapshot): Observable<DataSetItemModel[]> | DataSetItemModel[] {
-        const id = +route.params['id'];
-        return this.network.dataSetItemController.test(id);
+        const dataSetItemsSearch = this.ngRedux.getState().dataSetItemsSearch;
+        dataSetItemsSearch.dataSetId = +route.params['id'];
+        return this.network.dataSetItemController.search(dataSetItemsSearch);
     }
+
 }

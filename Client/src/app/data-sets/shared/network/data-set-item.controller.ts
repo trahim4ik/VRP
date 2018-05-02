@@ -6,13 +6,15 @@ import { Observable } from 'rxjs/Observable';
 
 import { BaseController } from '../../../core/network';
 import { SearchModel, SearchResultModel } from '../../../core/models';
-import { DataSetItemModel } from '../models';
+import { DataSetItemModel, DataSetItemSearchModel } from '../models';
 import { IAppState } from '../../../store/app-state';
 
 export class DataSetItemController extends BaseController {
 
     public static LOADED_DATASET_ITEM = 'LOADED_DATASET_ITEM';
     public static LOADED_DATASET_ITEMS = 'LOADED_DATASET_ITEMS';
+    public static SEARCH_DATASET_ITEMS = 'LOADED_DATASET_ITEMS';
+    public static LAZY_DATASET_ITEMS = 'LAZY_DATASET_ITEMS';
 
     constructor(http: Http, protected ngRedux: NgRedux<IAppState>) {
         super(http, ngRedux);
@@ -26,7 +28,21 @@ export class DataSetItemController extends BaseController {
         return super.httpGet(DataSetItemController.LOADED_DATASET_ITEMS, `DataSetItem/Train/${id}`, x => x);
     }
 
-    public search(model: SearchModel): Observable<SearchResultModel<DataSetItemModel>> {
-        return super.httpPost(null, `DataSetItem/Search`, x => new SearchResultModel<DataSetItemModel>(x), model);
+    public lazy(model: SearchModel): Observable<DataSetItemModel[]> {
+        return super.httpPost(
+            DataSetItemController.LAZY_DATASET_ITEMS,
+            `DataSetItem/Search`,
+            x => new SearchResultModel<DataSetItemModel>(x),
+            model
+        );
+    }
+
+    public search(model: DataSetItemSearchModel): Observable<DataSetItemModel[]> {
+        return super.httpPost(
+            DataSetItemController.SEARCH_DATASET_ITEMS,
+            `DataSetItem/Search`,
+            x => new SearchResultModel<DataSetItemModel>(x),
+            model
+        );
     }
 }

@@ -1,4 +1,19 @@
-<mat-table #table [dataSource]="items" *ngIf="items">
+<div class="filter-container">
+
+  <mat-form-field>
+    <input matInput #filter placeholder="Filter" [(ngModel)]="searchModel.query" (ngModelChange)="search.emit()">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Item Type" [(ngModel)]="searchModel.dataSetType" (ngModelChange)="search.emit()">
+      <mat-option *ngFor="let dataSetItemType of dataSetItemTypes" [value]="dataSetItemType.value">{{ dataSetItemType.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+
+<mat-table #table [dataSource]="items" *ngIf="items" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+  (scrolled)="onScroll()">
 
   <ng-container matColumnDef="district">
     <mat-header-cell *matHeaderCellDef> District </mat-header-cell>
@@ -19,7 +34,7 @@
     <mat-header-cell *matHeaderCellDef> rooms </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.rooms}} </mat-cell>
   </ng-container>
-  
+
   <ng-container matColumnDef="saleDate">
     <mat-header-cell *matHeaderCellDef> Sale </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.saleDate | date:"MM/dd/yyyy" }} </mat-cell>

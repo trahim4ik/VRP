@@ -1,6 +1,6 @@
 export { DataSetsDataSource } from './data-sets-data.source';
 
-export { DataSetItemModel, DataSetModel } from './models';
+export { DataSetItemModel, DataSetModel, DataSetItemSearchModel } from './models';
 
 export { DataSetController, DataSetItemController, DataSetsNetwork } from './network';
 

@@ -32,7 +32,14 @@
         <mat-icon>attach_file</mat-icon>
         <span>Dataset Items</span>
       </ng-template>
-      <data-set-items [items]="datasetItems"></data-set-items>
+
+      <data-set-items
+        [searchModel]="dataSetItemsSearch"
+        [items]="dataSetItems"
+        (search)="onSearchDataSetItems()"
+        (lazy)="onLazyDataSetItems()">
+      </data-set-items>
+
     </mat-tab>
 
   </mat-tab-group>
