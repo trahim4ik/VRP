@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManageDataSetsComponent } from './manage-data-sets.component';
+import { DataSetsComponent } from './data-sets.component';
 
-describe('ManageDataSetsComponent', () => {
-  let component: ManageDataSetsComponent;
-  let fixture: ComponentFixture<ManageDataSetsComponent>;
+describe('DataSetsComponent', () => {
+  let component: DataSetsComponent;
+  let fixture: ComponentFixture<DataSetsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ManageDataSetsComponent ]
+      declarations: [DataSetsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ManageDataSetsComponent);
+    fixture = TestBed.createComponent(DataSetsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

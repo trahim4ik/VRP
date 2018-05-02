@@ -4,3 +4,14 @@
     width: 400px;
     max-width: 100%;
 }
+
+.attachments-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    attachment-tile {
+        max-width: 400px;
+        margin: 8px;
+    }
+}

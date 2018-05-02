@@ -10,6 +10,7 @@ using System;
 using Microsoft.AspNetCore.Http.Features;
 using VRP.Api.Extensions;
 using VRP.Core.Options;
+using VRP.NeuronNetwork;
 using VRP.Services;
 
 namespace VRP.Api {
@@ -37,13 +38,15 @@ namespace VRP.Api {
 
             services.AddCustomFilters();
 
+            services.AddNeuronNetworkServices();
+
             services.AddAuthorization()
                 .AddAuthentication()
                 .AddCookie();
 
             services.Configure<FormOptions>(
                 options => {
-                    options.MultipartBodyLengthLimit = 80000000;
+                    options.MultipartBodyLengthLimit = int.MaxValue;
                     options.ValueLengthLimit = int.MaxValue;
                     options.MultipartHeadersLengthLimit = int.MaxValue;
                 });

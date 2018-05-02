@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { DataSetActions } from '../../shared';
+import { FileEntryModel } from '../../../shared/models';
 
 @Component({
   selector: 'train-data-set',
@@ -11,6 +12,7 @@ export class TrainDataSetComponent implements OnInit {
 
 
   @Input() id: number;
+  @Input() files: FileEntryModel[] = [];
 
   protected url: string;
 

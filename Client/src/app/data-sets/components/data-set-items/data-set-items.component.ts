@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DataSetItemModel } from '../../shared';
 
 @Component({
   selector: 'data-set-items',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./data-set-items.component.scss']
 })
 export class DataSetItemsComponent implements OnInit {
+
+  @Input() items: DataSetItemModel[] = [];
+
+  protected displayedColumns = ['district', 'productType', 'price', 'rooms', 'saleDate'];
 
   constructor() { }
 

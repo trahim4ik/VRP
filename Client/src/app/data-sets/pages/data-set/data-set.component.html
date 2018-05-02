@@ -1,5 +1,6 @@
 <page-header [title]="title"></page-header>
-<mat-card class="dataset-content">
+
+<mat-card class="page-content">
   <mat-tab-group class="demo-tab-group">
 
     <mat-tab label="Basic Details">
@@ -15,7 +16,7 @@
         <mat-icon>attach_file</mat-icon>
         <span>Train</span>
       </ng-template>
-      <train-data-set [id]="model.id"></train-data-set>
+      <train-data-set [id]="model.id" [files]="model.fileEntries"></train-data-set>
     </mat-tab>
 
     <mat-tab label="Test Tab" [disabled]="!model.id">
@@ -23,8 +24,15 @@
         <mat-icon>attach_file</mat-icon>
         <span>Test</span>
       </ng-template>
-      <test-data-set [id]="model.id"></test-data-set>
-      <attachments [attachments]="model.fileEntries"></attachments>
+      <test-data-set [id]="model.id" [files]="model.fileEntries"></test-data-set>
+    </mat-tab>
+
+    <mat-tab label="Train Dataset Items Tab" *ngIf="model.id">
+      <ng-template mat-tab-label>
+        <mat-icon>attach_file</mat-icon>
+        <span>Dataset Items</span>
+      </ng-template>
+      <data-set-items [items]="datasetItems"></data-set-items>
     </mat-tab>
 
   </mat-tab-group>

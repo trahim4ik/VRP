@@ -19,7 +19,6 @@ export class AdminSideMenuComponent implements OnInit {
 
   manageNavigations: NavigationModel[] = [
     new NavigationModel({ title: 'Users', link: './users', icon: 'supervisor_account' }),
-    new NavigationModel({ title: 'Realties', link: './realties', icon: 'location_city' }),
     new NavigationModel({ title: 'Datasets', link: './datasets', icon: 'equalizer' })
   ];
 

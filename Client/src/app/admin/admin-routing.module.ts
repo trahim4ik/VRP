@@ -12,7 +12,6 @@ const adminRoutes: Routes = [
     children: [
       { path: '', component: AdminHomeComponent },
       { path: 'users', loadChildren: 'app/users/users.module#UsersModule' },
-      { path: 'realties', loadChildren: 'app/realties/realties.module#RealtiesModule' },
       { path: 'datasets', loadChildren: 'app/data-sets/data-sets.module#DataSetsModule' }
     ]
   }

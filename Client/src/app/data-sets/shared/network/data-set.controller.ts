@@ -4,10 +4,10 @@ import { NgRedux } from '@angular-redux/store';
 
 import { Observable } from 'rxjs/Observable';
 
-import { BaseController } from '../../core/network';
-import { SearchModel, SearchResultModel } from '../../core/models';
-import { DataSetModel } from './data-set.model';
-import { IAppState } from '../../store/app-state';
+import { BaseController } from '../../../core/network';
+import { SearchModel, SearchResultModel } from '../../../core/models';
+import { DataSetModel } from '../models';
+import { IAppState } from '../../../store/app-state';
 
 export class DataSetController extends BaseController {
 
@@ -16,6 +16,7 @@ export class DataSetController extends BaseController {
     public static UPDATED_DATASET = 'UPDATED_DATASET';
     public static DELETED_DATASET = 'DELETED_DATASET';
     public static LOADED_DATASETS = 'LOADED_DATASETS';
+    public static TRAIN_DATASET = 'TRAIN_DATASET';
 
     constructor(http: Http, protected ngRedux: NgRedux<IAppState>) {
         super(http, ngRedux);
@@ -23,6 +24,15 @@ export class DataSetController extends BaseController {
 
     public get(id: number): Observable<DataSetModel> {
         return super.httpGet(DataSetController.LOADED_DATASET, `DataSet/${id}`, x => new DataSetModel(x));
+    }
+
+    public delete(id: number): Observable<DataSetModel> {
+        return null;
+        //return super.httpDelete('', `DataSet`, id);
+    }
+
+    public train(id: number): Observable<DataSetModel> {
+        return super.httpPost(DataSetController.TRAIN_DATASET, `DataSet/TrainNetwork/${id}`, x => new DataSetModel(x));
     }
 
     public search(model: SearchModel): Observable<SearchResultModel<DataSetModel>> {

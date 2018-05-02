@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using EFCore.BulkExtensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using VRP.Core.Interfaces;
@@ -10,7 +11,7 @@ namespace VRP.DAL.Core
 {
     public class DbRepository<TEntity> : Repository<TEntity> where TEntity : class, IEntity {
 
-        #region properties
+        #region Properties
 
         private readonly ApplicationDbContext _dbContext;
         private IDbContextTransaction _dbTransaction;
@@ -57,6 +58,13 @@ namespace VRP.DAL.Core
             dbSet.AddRange(models);
             SaveChanges();
             return models;
+        }
+
+        public override void CreateBulk(List<TEntity> models) {
+            using (var transaction = _dbContext.Database.BeginTransaction()) {
+                _dbContext.BulkInsert<TEntity>(models);
+                transaction.Commit();
+            }
         }
 
         /// <inheritdoc cref="IRepository{TEntity}.UpdateNoTransaction(List{TEntity})"/>

@@ -146,6 +146,13 @@ namespace VRP.DAL.Core {
         List<TEntity> Create(List<TEntity> models);
 
         /// <summary>
+        /// Create a lot of count records to use Bulk
+        /// </summary>
+        /// <param name="models"></param>
+        /// <returns></returns>
+        void CreateBulk(List<TEntity> models);
+
+        /// <summary>
         /// Create new items in exising transaction
         /// </summary>
         /// <param name="models"></param>

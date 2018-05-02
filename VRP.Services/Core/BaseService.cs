@@ -170,6 +170,16 @@ namespace VRP.Services.Core {
             return Repository.Create(entities).Select(Mapper.Map<TEntity, TDto>).ToList();
         }
 
+        /// <inheritdoc cref="IBaseService{TEntity,TDto}.CreateBulk(List{TDto})"/>
+        public virtual void CreateBulk(List<TDto> models) {
+            if (models == null) {
+                throw new ArgumentNullException(nameof(models),
+                    $"BaseService<{typeof(TEntity).FullName}, {typeof(TDto).FullName}> Create");
+            }
+            var entities = models.Select(Mapper.Map<TDto, TEntity>).ToList();
+            Repository.CreateBulk(entities);
+        }
+
         #endregion
 
         #region Update

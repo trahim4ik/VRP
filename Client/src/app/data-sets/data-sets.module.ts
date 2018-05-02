@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { LoadingBarHttpModule } from '@ngx-loading-bar/http';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
 import { SharedModule } from '../shared/shared.module';
 import { AppMaterialModule } from './../material/app-material.module';
@@ -13,6 +15,7 @@ import {
   AttachmentTileComponent,
   AttachmentsComponent,
   BasicDetailsComponent,
+  DataSetItemsComponent,
   TestDataSetComponent,
   TrainDataSetComponent
 } from './components';
@@ -23,6 +26,8 @@ import {
     FormsModule,
     SharedModule,
     AppMaterialModule,
+    LoadingBarHttpModule,
+    LoadingBarRouterModule,
     DataSetsRoutingModule
   ],
   declarations: [
@@ -32,6 +37,7 @@ import {
     AttachmentTileComponent,
     AttachmentsComponent,
     BasicDetailsComponent,
+    DataSetItemsComponent,
     TestDataSetComponent,
     TrainDataSetComponent
   ],

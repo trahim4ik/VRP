@@ -1,3 +1,30 @@
-<p>
-  data-set-items works!
-</p>
+<mat-table #table [dataSource]="items" *ngIf="items">
+
+  <ng-container matColumnDef="district">
+    <mat-header-cell *matHeaderCellDef> District </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.district}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="productType">
+    <mat-header-cell *matHeaderCellDef> Product Type </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.productType}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="rooms">
+    <mat-header-cell *matHeaderCellDef> rooms </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.rooms}} </mat-cell>
+  </ng-container>
+  
+  <ng-container matColumnDef="saleDate">
+    <mat-header-cell *matHeaderCellDef> Sale </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.saleDate | date:"MM/dd/yyyy" }} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

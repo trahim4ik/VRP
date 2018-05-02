@@ -122,6 +122,9 @@ namespace VRP.DAL.Core {
             }
         }
 
+        /// <inheritdoc cref="IRepository{TEntity}.CreateBulk(List{TEntity})"/>
+        public abstract void CreateBulk(List<TEntity> models);
+
         /// <inheritdoc cref="IRepository{TEntity}.CreateNoTransaction(TEntity)"/>
         public TEntity CreateNoTransaction(TEntity model) {
             return CreateNoTransaction(new List<TEntity> { model }).FirstOrDefault();

@@ -4,15 +4,15 @@ import { NgRedux } from '@angular-redux/store';
 
 import { Observable } from 'rxjs/Observable';
 
-import { BaseController } from '../../core/network';
-import { SearchModel, SearchResultModel } from '../../core/models';
-import { DataSetItemModel } from './data-set-item.model';
-import { IAppState } from '../../store/app-state';
+import { BaseController } from '../../../core/network';
+import { SearchModel, SearchResultModel } from '../../../core/models';
+import { DataSetItemModel } from '../models';
+import { IAppState } from '../../../store/app-state';
 
 export class DataSetItemController extends BaseController {
 
-
     public static LOADED_DATASET_ITEM = 'LOADED_DATASET_ITEM';
+    public static LOADED_DATASET_ITEMS = 'LOADED_DATASET_ITEMS';
 
     constructor(http: Http, protected ngRedux: NgRedux<IAppState>) {
         super(http, ngRedux);
@@ -20,6 +20,10 @@ export class DataSetItemController extends BaseController {
 
     public get(id: number): Observable<DataSetItemModel> {
         return super.httpGet(DataSetItemController.LOADED_DATASET_ITEM, `DataSetItem/${id}`, x => new DataSetItemModel(x));
+    }
+
+    public test(id: number): Observable<DataSetItemModel[]> {
+        return super.httpGet(DataSetItemController.LOADED_DATASET_ITEMS, `DataSetItem/Train/${id}`, x => x);
     }
 
     public search(model: SearchModel): Observable<SearchResultModel<DataSetItemModel>> {

@@ -21,12 +21,24 @@ namespace VRP.Services.Implementation {
                 throw new InvalidDataException($"Invalid file path provided. Path : {file}");
             }
 
-            using (TextReader reader = File.OpenText(file)) {
-                var csv = new CsvReader(reader);
-                csv.Configuration.RegisterClassMap<DataSetItemMap>();
-                csv.Configuration.HeaderValidated = null;
-                csv.Configuration.MissingFieldFound = null;
-                return csv.GetRecords<DataSetItemModel>().ToList();
+            try {
+
+                using (var stream = File.OpenRead(file)) {
+                    using (var reader = new StreamReader(stream)) {
+                        var csv = new CsvReader(reader);
+                        csv.Configuration.RegisterClassMap<DataSetItemMap>();
+                        csv.Configuration.HeaderValidated = null;
+                        csv.Configuration.ReadingExceptionOccurred = exception => {
+                            var a = exception;
+
+                        };
+                        csv.Configuration.MissingFieldFound = null;
+                        var records = csv.GetRecords<DataSetItemModel>().ToList();
+                        return records;
+                    }
+                }
+            } catch (Exception e) {
+                throw;
             }
         }
 

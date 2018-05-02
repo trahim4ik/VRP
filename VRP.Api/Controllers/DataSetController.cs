@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +11,7 @@ using VRP.Core.Enums;
 using VRP.Core.Options;
 using VRP.Dtos;
 using VRP.Dtos.Core;
+using VRP.NeuronNetwork;
 using VRP.Services.Interfaces;
 
 namespace VRP.Api.Controllers {
@@ -26,6 +26,7 @@ namespace VRP.Api.Controllers {
         private readonly IOptions<FileSystemOptions> _fileSystemOptions;
         private readonly IFileHandlerService _fileHandlerService;
         private readonly IDataSetFileEntryService _dataSetFileEntryService;
+        private readonly INetwork _network;
 
         #endregion
 
@@ -38,6 +39,7 @@ namespace VRP.Api.Controllers {
             _fileSystemOptions = ServiceProvider.GetRequiredService<IOptions<FileSystemOptions>>();
             _parser = ServiceProvider.GetRequiredService<IDataSetParser>();
             _fileHandlerService = ServiceProvider.GetRequiredService<IFileHandlerService>();
+            _network = ServiceProvider.GetRequiredService<INetwork>();
         }
 
         #endregion
@@ -70,6 +72,13 @@ namespace VRP.Api.Controllers {
         }
 
         [HttpPost]
+        [Route("TrainNetwork/{id}")]
+        public IActionResult TrainNetwork([FromRoute] long id) {
+            return Ok(_dataSetFileEntryService.GetList(x => x.DataSetId == id, select: x => x.DataSet)
+                .ToList());
+        }
+
+        [HttpPost]
         [Route("Train/{id}")]
         public async Task<IActionResult> Train([FromRoute] long id, IFormFile file) {
             if (file == null) {
@@ -88,6 +97,7 @@ namespace VRP.Api.Controllers {
             });
 
             var filePath = Path.Combine(_fileSystemOptions.Value.Content, fileEntry.Name);
+            _network.Train(filePath);
             var dataSetItems = _parser.Parse(filePath);
             dataSetItems = _dataSetItemService.Create(dataSetItems.ToList(), id);
 

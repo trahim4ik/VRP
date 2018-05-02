@@ -7,7 +7,11 @@
     height: 100%;
 
     /deep/ {
-        
+
+        .mat-tab-group {
+            height: 100%;
+        }
+
         .mat-tab-label-content {
             display: flex;
             align-items: center;
@@ -24,6 +28,13 @@
     }
 }
 
-.dataset-content {
+page-header {
+    height: 80px;
+    min-height: 80px;
+}
+
+.page-content {
+    flex: 1;
     height: 100%;
+    overflow: hidden;
 }

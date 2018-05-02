@@ -10,9 +10,11 @@ namespace VRP.Services.CsvMaps {
             Map(m => m.InsertDate).Ignore();
             Map(m => m.DeleteDate).Ignore();
             Map(m => m.DataSetId).Ignore();
+            Map(m => m.DataSetType).Ignore();
 
             Map(m => m.Price).Name("price_doc").TypeConverter<DoubleTypeConverter>();
-            Map(m => m.SaleDate).Name("timestamp");
+            Map(m => m.SaleDate).Name("timestamp").TypeConverter<DateTypeConverter>();
+            Map(m => m.FullArea).Name("full_sq").TypeConverter<DoubleTypeConverter>();
             Map(m => m.LifeArea).Name("life_sq").TypeConverter<DoubleTypeConverter>();
             Map(m => m.Floor).Name("floor").TypeConverter<IntTypeConverter>();
             Map(m => m.MaxFloor).Name("max_floor").TypeConverter<IntTypeConverter>();
@@ -22,7 +24,7 @@ namespace VRP.Services.CsvMaps {
             Map(m => m.KitchenArea).Name("kitch_sq").TypeConverter<DoubleTypeConverter>();
             Map(m => m.State).Name("state").TypeConverter<IntTypeConverter>();
             Map(m => m.ProductType).Name("product_type");
-            Map(m => m.District).Name("sub_area").TypeConverter<IntTypeConverter>();
+            Map(m => m.District).Name("sub_area");
 
             Map(m => m.Population).Name("full_all").TypeConverter<IntTypeConverter>();
             Map(m => m.Male).Name("male_f").TypeConverter<IntTypeConverter>();
@@ -45,7 +47,7 @@ namespace VRP.Services.CsvMaps {
             Map(m => m.SchoolDistance).Name("school_km").TypeConverter<DoubleTypeConverter>();
             Map(m => m.ParkDistance).Name("park_km").TypeConverter<DoubleTypeConverter>();
             Map(m => m.GreenZoneDistance).Name("green_zone_km").TypeConverter<DoubleTypeConverter>();
-            Map(m => m.IndustrialZoneDistance).Name("industrial_zone_km").TypeConverter<DoubleTypeConverter>();
+            Map(m => m.IndustrialZoneDistance).Name("industrial_zone_km", "industrial_km").TypeConverter<DoubleTypeConverter>();
             Map(m => m.TrainStationDistance).Name("zd_vokzaly_avto_km").TypeConverter<DoubleTypeConverter>();
             Map(m => m.BusTerminalDistance).Name("bus_terminal_avto_km").TypeConverter<DoubleTypeConverter>();
             Map(m => m.BigMarketDistance).Name("big_market_km").TypeConverter<DoubleTypeConverter>();

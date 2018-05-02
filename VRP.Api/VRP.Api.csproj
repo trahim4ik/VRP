@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DAL.VRP\VRP.DAL.csproj" />
+    <ProjectReference Include="..\VRP.DeepLerning\VRP.NeuronNetwork.csproj" />
     <ProjectReference Include="..\VRP.Dtos\VRP.Dtos.csproj" />
     <ProjectReference Include="..\VRP.Services\VRP.Services.csproj" />
   </ItemGroup>

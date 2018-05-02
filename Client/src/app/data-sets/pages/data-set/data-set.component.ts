@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgRedux, select } from '@angular-redux/store';
 
 import { IAppState } from '../../../store/app-state';
-import { DataSetModel, DataSetsNetwork } from '../../shared';
+import { DataSetModel, DataSetsNetwork, DataSetItemModel } from '../../shared';
 
 @Component({
   selector: 'data-set-page',
@@ -12,6 +12,7 @@ import { DataSetModel, DataSetsNetwork } from '../../shared';
 export class DataSetComponent implements OnInit, OnDestroy {
 
   protected model: DataSetModel;
+  protected datasetItems: DataSetItemModel[];
   protected unsubscribe: Function;
   protected title: string;
 
@@ -29,7 +30,8 @@ export class DataSetComponent implements OnInit, OnDestroy {
   }
 
   protected onStateChange(state: IAppState): void {
-    this.model = this.ngRedux.getState().dataSet || new DataSetModel();
+    this.model = state.dataSet || new DataSetModel();
+    this.datasetItems = state.dataSetItems || [];
     this.title = this.model && this.model.id ? 'Edit Dataset' : 'Create Dataset';
   }
 

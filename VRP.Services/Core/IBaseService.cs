@@ -129,6 +129,12 @@ namespace VRP.Services.Core {
         List<TDto> Create(List<TDto> models);
 
         /// <summary>
+        /// Create a lot of count records to use Bulk
+        /// </summary>
+        /// <param name="models"></param>
+        void CreateBulk(List<TDto> models);
+
+        /// <summary>
         /// Updates the specified model.
         /// </summary>
         /// <param name="model">The model.</param>

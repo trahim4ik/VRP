@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort } from '@angular/material';
+import { MatPaginator, MatSort, MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { DataSetsDataSource, DataSetsNetwork } from '../../shared';
 import { PaginatorSizes, DefaultPageSize } from '../../../core/constants';
 import { SearchModel } from '../../../core/models';
+import { ConfirmDialogComponent } from '../../../shared/components';
 
 @Component({
   selector: 'data-sets-page',
@@ -27,7 +28,8 @@ export class DataSetsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private network: DataSetsNetwork
+    private network: DataSetsNetwork,
+    private dialog: MatDialog
   ) {
   }
 
@@ -49,7 +51,22 @@ export class DataSetsComponent implements OnInit {
   }
 
   onDelete(id: number) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Confirm dataset delete',
+        content: 'Dataset related data will be removed. Are you sure you want to delete?'
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.network.dataSetController.delete(id)
+          .subscribe((data) => { this.dataSource.reload(); });
+      }
+    });
+  }
 
+  onTrain(id: number) {
+    this.network.dataSetController.train(id);
   }
 
 }

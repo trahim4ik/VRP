@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 
 import { userReducer } from '../users/shared';
-import { dataSetReducer } from '../data-sets/shared';
+import { dataSetReducer, dataSetItemsReducer } from '../data-sets/shared/store';
 
 export const rootReducer = combineReducers({
     user: userReducer,
-    dataSet: dataSetReducer
+    dataSet: dataSetReducer,
+    dataSetItems: dataSetItemsReducer
 });

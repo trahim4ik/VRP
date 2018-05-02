@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VRP.Entities", "VRP.Entitie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VRP.Dtos", "VRP.Dtos\VRP.Dtos.csproj", "{9000CAB4-66B0-4DB6-9F2C-CE8FFCBDB5AC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VRP.DeepLerning", "VRP.DeepLerning\VRP.DeepLerning.csproj", "{2A45EEFE-C3E6-45C1-B38F-D309B9399DFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VRP.NeuronNetwork", "VRP.DeepLerning\VRP.NeuronNetwork.csproj", "{2A45EEFE-C3E6-45C1-B38F-D309B9399DFB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VRP.Services", "VRP.Services\VRP.Services.csproj", "{F24A4EA1-6E34-4133-96F1-01E8C0652AC6}"
 EndProject

@@ -3,8 +3,8 @@ import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
 
-import { DataSetModel } from './data-set.model';
-import { DataSetsNetwork } from './data-sets.network';
+import { DataSetModel } from '../models';
+import { DataSetsNetwork } from '../network';
 
 @Injectable()
 export class DataSetResolver implements Resolve<DataSetModel> {
