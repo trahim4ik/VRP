@@ -2,20 +2,28 @@
 
   <mat-card>
     <mat-card-title routerLink="./users" routerLinkActive="active">Users</mat-card-title>
-    <mat-card-subtitle>Faster startup time with lazy loaded feature modules</mat-card-subtitle>
-    <mat-card-actions>actions</mat-card-actions>
+    <mat-card-subtitle>Faster setup users to work</mat-card-subtitle>
+    <mat-card-actions>
+      <button mat-mini-fab color="accent" matTooltip="Create User" (click)="onCreateUser()">
+        <mat-icon aria-label="Cancel Page form">add</mat-icon>
+      </button>
+    </mat-card-actions>
   </mat-card>
 
-  <mat-card>
+  <!-- <mat-card>
     <mat-card-title routerLink="./realties" routerLinkActive="active">Realties</mat-card-title>
     <mat-card-subtitle>Flexible theming support for provided and custom components</mat-card-subtitle>
     <mat-card-actions>actions</mat-card-actions>
-  </mat-card>
+  </mat-card> -->
 
   <mat-card>
     <mat-card-title routerLink="./datasets" routerLinkActive="active">Datasets</mat-card-title>
-    <mat-card-subtitle>Superior developer experience, code completion, refactoring and less bugs</mat-card-subtitle>
-    <mat-card-actions>actions</mat-card-actions>
+    <mat-card-subtitle>Manage application datasets, train network and view reports</mat-card-subtitle>
+    <mat-card-actions>
+      <button mat-mini-fab color="accent" (click)="onCreateDataset()" matTooltip="Create Dataset">
+        <mat-icon aria-label="Cancel Page form">add</mat-icon>
+      </button>
+    </mat-card-actions>
   </mat-card>
 
 </div>

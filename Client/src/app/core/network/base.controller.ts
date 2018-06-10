@@ -88,7 +88,7 @@ export abstract class BaseController {
     }
 
     protected mapType<T>(res: Response, ctor: TypeConstructor<T>): any {
-        const val: any = res.status === 204 ? null : res.json();
+        const val: any = res.status === 204 || !res.json ? null : res.json();
         if (val === null) {
             return val;
         }

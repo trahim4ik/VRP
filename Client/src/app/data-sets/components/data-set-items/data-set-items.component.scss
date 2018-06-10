@@ -11,6 +11,10 @@
     overflow-y: scroll;
 }
 
+.mat-header-cell {
+    text-transform: uppercase;
+}
+
 .filter-container {
     .mat-form-field {
         margin-right: 30px;

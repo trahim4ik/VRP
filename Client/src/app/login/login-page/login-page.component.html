@@ -8,7 +8,7 @@
 
     <mat-form-field>
       <input matInput [(ngModel)]="model.password" name="password" placeholder="Password" [type]="hide ? 'password' : 'text'">
-      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+      <mat-icon matSuffix (click)="hide = !hide">{{ hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </mat-form-field>
 
     <button mat-raised-button color="accent" type="submit">Login</button>

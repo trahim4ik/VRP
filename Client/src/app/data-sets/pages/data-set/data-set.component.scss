@@ -7,7 +7,6 @@
     height: 100%;
 
     /deep/ {
-
         .mat-tab-group {
             height: 100%;
         }
@@ -24,6 +23,10 @@
 
         .mat-tab-body {
             padding-top: 24px;
+        }
+
+        .mat-tab-body-wrapper {
+            flex: 1;
         }
     }
 }

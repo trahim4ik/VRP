@@ -15,6 +15,9 @@ namespace VRP.Services {
             services.AddScoped(typeof(IDataSetItemService), typeof(DataSetItemService));
             services.AddScoped(typeof(IDataSetParser), typeof(CsvDataSetParser));
             services.AddScoped(typeof(IDataSetService), typeof(DataSetService));
+            services.AddScoped(typeof(IDataSetService), typeof(DataSetService));
+            services.AddScoped(typeof(IDataSetNetworkService), typeof(DataSetNetworkService));
+            services.AddScoped(typeof(IDataSetPredictService), typeof(DataSetPredictService));
             services.AddScoped(typeof(IFileHandlerService), typeof(FileHandlerService));
             services.AddScoped(typeof(IFileEntryService), typeof(FileEntryService));
             services.AddScoped(typeof(IRealtyService), typeof(RealtyService));

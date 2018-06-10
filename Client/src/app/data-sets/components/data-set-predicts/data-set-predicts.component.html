@@ -1,0 +1,39 @@
+<div class="chart-container">
+  <canvas baseChart width="1200" height="600" [datasets]="lineChartData" [options]="lineChartOptions" [colors]="lineChartColors"
+    [labels]="lineChartLabels" [legend]="lineChartLegend" [chartType]="lineChartType" *ngIf="isBuilded">
+  </canvas>
+  <mat-paginator [length]="pageEvent.length" [pageSize]="pageEvent.pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onChangePage($event)"></mat-paginator>
+</div>
+
+<div class="table-container">
+  <mat-table #table [dataSource]="items" *ngIf="items">
+
+    <ng-container matColumnDef="target">
+      <mat-header-cell *matHeaderCellDef> Target </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.target | currency:'RUB ':true:'1.0-0' }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="predict">
+      <mat-header-cell *matHeaderCellDef> Predict </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.predict | currency:'RUB ':true:'1.0-0' }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="absolute">
+      <mat-header-cell *matHeaderCellDef> Absolute Error</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.getAbsolute() | currency:'RUB ':true:'1.0-0' }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="relative">
+      <mat-header-cell *matHeaderCellDef> Relative Error</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.getRelative() | number: "1.2-2"}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="difference">
+      <mat-header-cell *matHeaderCellDef>Percentage Difference</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.getPercentageDifference() | number: "1.2-2"}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row [ngClass]="{'closed-row': row.deleteDate }" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

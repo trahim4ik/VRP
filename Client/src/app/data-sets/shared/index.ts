@@ -1,9 +1,35 @@
 export { DataSetsDataSource } from './data-sets-data.source';
 
-export { DataSetItemModel, DataSetModel, DataSetItemSearchModel } from './models';
+export {
+    DataSetItemModel,
+    DataSetModel,
+    DataSetItemSearchModel,
+    DataSetPredictModel,
+    DataSetNetworkModel,
+    DataSetItemTypeModel
+} from './models';
 
-export { DataSetController, DataSetItemController, DataSetsNetwork } from './network';
+export {
+    DataSetController,
+    DataSetItemController,
+    DataSetFileController,
+    DataSetNetworkController,
+    DataSetPredictController,
+    DataSetsNetwork
+} from './network';
 
-export { DataSetResolver } from './resolvers';
+export {
+    DataSetItemsResolver,
+    DataSetNetworksResolver,
+    DataSetPredictsResolver,
+    DataSetResolver,
+} from './resolvers';
 
-export { DataSetActions, dataSetReducer, dataSetItemsReducer } from './store';
+export {
+    DataSetActions,
+    dataSetReducer,
+    dataSetItemsReducer,
+    dataSetItemsSearchReducer,
+    dataSetNetworksReducer,
+    dataSetPredictsReducer
+} from './store';

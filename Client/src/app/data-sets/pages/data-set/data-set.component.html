@@ -14,17 +14,9 @@
     <mat-tab label="Train Tab" [disabled]="!model.id">
       <ng-template mat-tab-label>
         <mat-icon>attach_file</mat-icon>
-        <span>Train</span>
+        <span>Train Info</span>
       </ng-template>
       <train-data-set [id]="model.id" [files]="model.fileEntries"></train-data-set>
-    </mat-tab>
-
-    <mat-tab label="Test Tab" [disabled]="!model.id">
-      <ng-template mat-tab-label>
-        <mat-icon>attach_file</mat-icon>
-        <span>Test</span>
-      </ng-template>
-      <test-data-set [id]="model.id" [files]="model.fileEntries"></test-data-set>
     </mat-tab>
 
     <mat-tab label="Train Dataset Items Tab" *ngIf="model.id">
@@ -33,13 +25,25 @@
         <span>Dataset Items</span>
       </ng-template>
 
-      <data-set-items
-        [searchModel]="dataSetItemsSearch"
-        [items]="dataSetItems"
-        (search)="onSearchDataSetItems()"
-        (lazy)="onLazyDataSetItems()">
+      <data-set-items [searchModel]="dataSetItemsSearch" [items]="dataSetItems" (search)="onSearchDataSetItems()" (lazy)="onLazyDataSetItems()">
       </data-set-items>
 
+    </mat-tab>
+
+    <mat-tab label="Network History Tab" [disabled]="!model.id">
+      <ng-template mat-tab-label>
+        <mat-icon>attach_file</mat-icon>
+        <span>Network History</span>
+      </ng-template>
+      <data-set-network [id]="model.id" [items]="dataSetNetworks"></data-set-network>
+    </mat-tab>
+
+    <mat-tab label="Network Predicts Tab" [disabled]="!model.id">
+      <ng-template mat-tab-label>
+        <mat-icon>attach_file</mat-icon>
+        <span>Network Predicts</span>
+      </ng-template>
+      <data-set-predicts [id]="model.id" [items]="dataSetPredicts"></data-set-predicts>
     </mat-tab>
 
   </mat-tab-group>

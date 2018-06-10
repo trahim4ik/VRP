@@ -1,5 +1,7 @@
 <h1 mat-dialog-title *ngIf="data?.title">{{data && data.title ? data.title : 'Confirm' }}</h1>
+
 <div mat-dialog-content>{{data?.content}}</div>
+
 <div mat-dialog-actions>
   <button color="accent" (click)="dialogRef.close(false)" mat-mini-fab>
     <mat-icon>close</mat-icon>

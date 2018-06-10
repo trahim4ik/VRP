@@ -3,6 +3,7 @@ import { NgRedux, select } from '@angular-redux/store';
 
 import { IAppState } from '../../../store/app-state';
 import { DataSetModel, DataSetsNetwork, DataSetItemModel, DataSetItemSearchModel } from '../../shared';
+import { DataSetNetworkModel, DataSetPredictModel } from '../../shared/models';
 
 @Component({
   selector: 'data-set-page',
@@ -14,6 +15,8 @@ export class DataSetComponent implements OnInit, OnDestroy {
   protected model: DataSetModel;
   protected dataSetItems: DataSetItemModel[];
   protected dataSetItemsSearch: DataSetItemSearchModel;
+  protected dataSetNetworks: DataSetNetworkModel[];
+  protected dataSetPredicts: DataSetPredictModel[];
   protected unsubscribe: Function;
   protected title: string;
 
@@ -33,7 +36,9 @@ export class DataSetComponent implements OnInit, OnDestroy {
   protected onStateChange(state: IAppState): void {
     this.model = state.dataSet || new DataSetModel();
     this.dataSetItems = state.dataSetItems || [];
+    this.dataSetNetworks = state.dataSetNetworks || [];
     this.dataSetItemsSearch = state.dataSetItemsSearch;
+    this.dataSetPredicts = state.dataSetPredicts || [];
     this.title = this.model && this.model.id ? 'Edit Dataset' : 'Create Dataset';
   }
 
@@ -47,7 +52,6 @@ export class DataSetComponent implements OnInit, OnDestroy {
   }
 
   protected onCancel(): void {
-
   }
 
   protected onSearchDataSetItems(): void {

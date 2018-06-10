@@ -8,6 +8,7 @@ namespace VRP.Entities {
         public DateTime CreatedDate { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        //public string Logo { get; set; }
         public string Name => this.FirstName + " " + this.LastName;
     }
 }

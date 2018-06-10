@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { LoadingBarHttpModule } from '@ngx-loading-bar/http';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 import { SharedModule } from '../shared/shared.module';
 import { AppMaterialModule } from './../material/app-material.module';
@@ -17,7 +18,8 @@ import {
   AttachmentsComponent,
   BasicDetailsComponent,
   DataSetItemsComponent,
-  TestDataSetComponent,
+  DataSetNetworkComponent,
+  DataSetPredictsComponent,
   TrainDataSetComponent
 } from './components';
 
@@ -30,7 +32,8 @@ import {
     LoadingBarHttpModule,
     LoadingBarRouterModule,
     InfiniteScrollModule,
-    DataSetsRoutingModule
+    DataSetsRoutingModule,
+    ChartsModule
   ],
   declarations: [
     DataSetComponent,
@@ -40,8 +43,9 @@ import {
     AttachmentsComponent,
     BasicDetailsComponent,
     DataSetItemsComponent,
-    TestDataSetComponent,
-    TrainDataSetComponent
+    TrainDataSetComponent,
+    DataSetNetworkComponent,
+    DataSetPredictsComponent
   ],
   providers: [
     DataSetActions,

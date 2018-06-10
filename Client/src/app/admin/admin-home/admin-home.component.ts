@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'admin-home',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminHomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  protected onCreateUser(): void {
+    this.router.navigate(['/admin/users/', 0]);
+  }
+
+  protected onCreateDataset(): void {
+    this.router.navigate(['/admin/datasets/', 0]);
   }
 
 }

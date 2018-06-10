@@ -3,5 +3,5 @@
 <h3>Files</h3>
 
 <div class="attachments-section">
-    <attachment-tile [attachment]="attachment" *ngFor="let attachment of attachments"></attachment-tile>
+    <attachment-tile [attachment]="attachment" (download)="onDownload($event)" *ngFor="let attachment of attachments"></attachment-tile>
 </div>

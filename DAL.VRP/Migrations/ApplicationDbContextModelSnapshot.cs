@@ -265,6 +265,50 @@ namespace VRP.DAL.Migrations
                     b.ToTable("DataSetItems");
                 });
 
+            modelBuilder.Entity("VRP.Entities.DataSetNetwork", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long>("DataSetId");
+
+                    b.Property<DateTime?>("DeleteDate");
+
+                    b.Property<double>("Error");
+
+                    b.Property<long>("FileEntryId");
+
+                    b.Property<DateTime>("InsertDate")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DataSetId");
+
+                    b.HasIndex("FileEntryId");
+
+                    b.ToTable("DataSetNetworks");
+                });
+
+            modelBuilder.Entity("VRP.Entities.DataSetPredict", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long>("DataSetId");
+
+                    b.Property<double>("Predict");
+
+                    b.Property<double>("Target");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DataSetId");
+
+                    b.ToTable("DataSetPredicts");
+                });
+
             modelBuilder.Entity("VRP.Entities.FileEntry", b =>
                 {
                     b.Property<long>("Id")
@@ -479,6 +523,27 @@ namespace VRP.DAL.Migrations
                 {
                     b.HasOne("VRP.Entities.DataSet", "DataSet")
                         .WithMany("DataSetItems")
+                        .HasForeignKey("DataSetId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("VRP.Entities.DataSetNetwork", b =>
+                {
+                    b.HasOne("VRP.Entities.DataSet", "DataSet")
+                        .WithMany("DataSetNetworks")
+                        .HasForeignKey("DataSetId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("VRP.Entities.FileEntry", "FileEntry")
+                        .WithMany()
+                        .HasForeignKey("FileEntryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("VRP.Entities.DataSetPredict", b =>
+                {
+                    b.HasOne("VRP.Entities.DataSet", "DataSet")
+                        .WithMany("DataSetPredicts")
                         .HasForeignKey("DataSetId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

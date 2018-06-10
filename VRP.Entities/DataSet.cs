@@ -14,5 +14,7 @@ namespace VRP.Entities {
         public User User { get; set; }
         public ICollection<DataSetItem> DataSetItems { get; set; }
         public ICollection<DataSetFileEntry> DataSetFileEntries { get; set; }
+        public ICollection<DataSetNetwork> DataSetNetworks { get; set; }
+        public ICollection<DataSetPredict> DataSetPredicts { get; set; }
     }
 }

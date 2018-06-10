@@ -1,0 +1,36 @@
+<!-- <h3>The current dataset network state</h3> -->
+
+<mat-table #table [dataSource]="items" *ngIf="items">
+
+  <ng-container matColumnDef="insertDate">
+    <mat-header-cell *matHeaderCellDef> Created Date </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.insertDate | date:"MM/dd/yyyy" }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="deleteDate">
+    <mat-header-cell *matHeaderCellDef> Closed Date </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.deleteDate | date:"MM/dd/yyyy" }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="error">
+    <mat-header-cell *matHeaderCellDef> Error </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.error | number: "1.4-4" }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="fileSize">
+    <mat-header-cell *matHeaderCellDef> Size </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ (element.fileEntry.length / 1000000) | number: "1.6-6" }} Mb </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions" class="actions-row">
+    <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-icon-button color="accent" matTooltip="Download network state" (click)="onDownload(element.fileEntryId, element.fileEntry.name)">
+        <mat-icon aria-label="Download network state">file_download</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row [ngClass]="{'closed-row': row.deleteDate }" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

@@ -1,50 +1,56 @@
-<div class="search">
-  <h1>Users</h1>
-  <mat-card>
-    <div class="table-header">
-      <mat-form-field>
-        <input matInput #filter placeholder="Filter">
-      </mat-form-field>
-      <button mat-raised-button color="accent" (click)="onEdit(0)">Create</button>
-    </div>
+<page-header [title]="'Manage Users'"></page-header>
 
-    <mat-table #table [dataSource]="dataSource" matSort>
-      <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="firstName">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> First Name </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="lastName">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="isAdmin">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Admin </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{ element.isAdmin ? 'Yes' : 'No' }} </mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="inActive">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Active </mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <mat-checkbox (change)="onToggleActive(element.id)" [checked]="!element.inActive" [disabled]="currentUser?.id === element.id"></mat-checkbox>
-        </mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="actions">
-        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <button mat-icon-button (click)="onEdit(element.id)">
-            <mat-icon aria-label="Edit">edit</mat-icon>
-          </button>
-        </mat-cell>
-      </ng-container>
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+<mat-card class="page-content">
 
-    <mat-paginator #paginator [pageSize]="pageSize" [length]="dataSource.total" [pageSizeOptions]="paginatorSizes">
-    </mat-paginator>
+  <div class="table-header">
+    <mat-form-field>
+      <input matInput #filter placeholder="Filter">
+    </mat-form-field>
+    <button mat-raised-button color="accent" (click)="onEdit(0)">Create</button>
+  </div>
 
-  </mat-card>
-</div>
+  <mat-table #table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="logo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Logo </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <img [src]="element.logo" width="40" height="40" alt="User logo" />
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> First Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="isAdmin">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Admin </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.isAdmin ? 'No' : 'Yes' }} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="inActive">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Active </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-checkbox (change)="onToggleActive(element.id)" [checked]="!element.inActive" [disabled]="currentUser?.id === element.id"></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="onEdit(element.id)">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator [pageSize]="pageSize" [length]="dataSource.total" [pageSizeOptions]="paginatorSizes">
+  </mat-paginator>
+
+</mat-card>

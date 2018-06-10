@@ -27,17 +27,27 @@
 
   <ng-container matColumnDef="price">
     <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+    <mat-cell *matCellDef="let element"> {{element.price | currency:'RUB ':true:'1.0-0' }} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="rooms">
-    <mat-header-cell *matHeaderCellDef> rooms </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef> Rooms </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.rooms}} </mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="saleDate">
-    <mat-header-cell *matHeaderCellDef> Sale </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.saleDate | date:"MM/dd/yyyy" }} </mat-cell>
+  <ng-container matColumnDef="fullArea">
+    <mat-header-cell *matHeaderCellDef> Full Area </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.fullArea}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="yearBuilt">
+    <mat-header-cell *matHeaderCellDef> Year Built </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.yearBuilt || '' }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="insertDate">
+    <mat-header-cell *matHeaderCellDef> Created </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.insertDate | date:"MM/dd/yyyy" }} </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

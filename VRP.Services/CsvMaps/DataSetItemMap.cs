@@ -43,16 +43,20 @@ namespace VRP.Services.CsvMaps {
             Map(m => m.CarMetroDistance).Name("metro_km_avto").TypeConverter<DoubleTypeConverter>();
             Map(m => m.TimeToMetro).Name("metro_min_walk").TypeConverter<DoubleTypeConverter>();
             Map(m => m.MetroDistance).Name("metro_km_walk").TypeConverter<DoubleTypeConverter>();
+
             Map(m => m.KindergartenDistance).Name("kindergarten_km").TypeConverter<DoubleTypeConverter>();
             Map(m => m.SchoolDistance).Name("school_km").TypeConverter<DoubleTypeConverter>();
             Map(m => m.ParkDistance).Name("park_km").TypeConverter<DoubleTypeConverter>();
             Map(m => m.GreenZoneDistance).Name("green_zone_km").TypeConverter<DoubleTypeConverter>();
             Map(m => m.IndustrialZoneDistance).Name("industrial_zone_km", "industrial_km").TypeConverter<DoubleTypeConverter>();
+
             Map(m => m.TrainStationDistance).Name("zd_vokzaly_avto_km").TypeConverter<DoubleTypeConverter>();
             Map(m => m.BusTerminalDistance).Name("bus_terminal_avto_km").TypeConverter<DoubleTypeConverter>();
+
             Map(m => m.BigMarketDistance).Name("big_market_km").TypeConverter<DoubleTypeConverter>();
             Map(m => m.MarketDistance).Name("market_shop_km").TypeConverter<DoubleTypeConverter>();
             Map(m => m.FitnessDistance).Name("fitness_km").TypeConverter<DoubleTypeConverter>();
+
             Map(m => m.SwimmingPoolDistance).Name("swim_pool_km").TypeConverter<DoubleTypeConverter>();
             Map(m => m.IcePalaceDistance).Name("ice_rink_km").TypeConverter<DoubleTypeConverter>();
             Map(m => m.StadiumDistance).Name("stadium_km").TypeConverter<DoubleTypeConverter>();

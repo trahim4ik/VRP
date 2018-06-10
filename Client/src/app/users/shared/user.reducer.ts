@@ -6,7 +6,7 @@ import { UsersController } from './users.controller';
 
 export const userReducer: Reducer<UserModel> = (state: UserModel = null, action: FluxStandardAction<UserModel>): UserModel => {
     switch (action.type) {
-        case UsersController.prototype.get.toString():
+        case UsersController.LOADED_USED:
             return Object.assign({}, state, action.payload);
         default:
             return state;

@@ -39,7 +39,9 @@ namespace VRP.Services.Implementation {
                 return x;
             });
 
-            return base.Create(items.ToList());
+            base.CreateBulk(items.ToList());
+
+            return GetListNoTracking(x => x.DataSetId == dataSetId, orderBys: CreateOrderBys(new OrderByDescending<DataSetItem, long>(x => x.Id)), take: 100);
         }
 
         public SearchResult<DataSetItemModel> Search(DataSetItemSearchModel model) {

@@ -1,0 +1,18 @@
+:host {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+.chart-container {
+    max-width: 1000px;
+    min-width: 1000px;
+}
+
+.table-container {
+    height: 100%;
+    flex: 1;
+    overflow-y: auto;
+}

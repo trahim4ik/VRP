@@ -27,8 +27,7 @@ export class DataSetController extends BaseController {
     }
 
     public delete(id: number): Observable<DataSetModel> {
-        return null;
-        //return super.httpDelete('', `DataSet`, id);
+        return super.httpDelete(null, `DataSet`, id, x => x);
     }
 
     public train(id: number): Observable<DataSetModel> {

@@ -15,12 +15,6 @@
     <h4 mat-line>{{navigation.title}}</h4>
   </mat-list-item>
 
-  <h3 mat-subheader>View</h3>
-  <mat-list-item [routerLink]="navigation.link" routerLinkActive="active" *ngFor="let navigation of settingsNavigations">
-    <mat-icon mat-list-icon>{{navigation.icon}}</mat-icon>
-    <h4 mat-line>{{navigation.title}}</h4>
-  </mat-list-item>
-
 </mat-nav-list>
 
 <div class="spacer"></div>

@@ -15,7 +15,7 @@ import { DefaultPageSize, PaginatorSizes } from '../../../core/constants';
 })
 export class UsersComponent implements OnInit {
 
-  protected displayedColumns = ['email', 'firstName', 'lastName', 'isAdmin', 'inActive', 'actions'];
+  protected displayedColumns = ['logo', 'email', 'firstName', 'lastName', 'isAdmin', 'inActive', 'actions'];
   protected dataSource: UsersDataSource;
   protected paginatorSizes = PaginatorSizes;
   protected pageSize = DefaultPageSize;

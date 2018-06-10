@@ -59,7 +59,7 @@ namespace VRP.Api.Controllers {
             }
 
             if (result.Succeeded) {
-                return Ok();
+                return Ok(StatusCodes.Status200OK);
             }
 
             return Unauthorized();

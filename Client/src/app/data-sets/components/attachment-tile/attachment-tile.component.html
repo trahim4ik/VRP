@@ -4,10 +4,10 @@
 </div>
 <div class="tile-length"> {{ (attachment.length / 1000000) | number: "1.2-2" }} Mb </div>
 <div class="tile-actions">
-  <button mat-icon-button color="accent">
+  <button mat-icon-button color="accent" (click)="download.emit({ id:attachment.id, name: attachment.fileName })">
     <mat-icon aria-label="Example icon-button with a heart icon">file_download</mat-icon>
   </button>
-  <button mat-icon-button color="warn">
+  <!-- <button mat-icon-button color="warn">
     <mat-icon aria-label="Delete Attachment">delete</mat-icon>
-  </button>
+  </button> -->
 </div>

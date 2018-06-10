@@ -24,7 +24,7 @@ export class DataSetItemsComponent {
   @Output() search = new EventEmitter();
   @Output() lazy = new EventEmitter();
 
-  protected displayedColumns = ['district', 'productType', 'price', 'rooms', 'saleDate'];
+  protected displayedColumns = ['district', 'productType', 'price', 'rooms', 'insertDate', 'fullArea', 'yearBuilt'];
 
   protected dataSetItemTypes = [
     new DataSetItemTypeModel({ value: 0, name: 'Train' }),

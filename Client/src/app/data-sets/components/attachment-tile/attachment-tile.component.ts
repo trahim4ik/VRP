@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FileEntryModel } from '../../../shared/models';
 
 @Component({
@@ -8,5 +8,6 @@ import { FileEntryModel } from '../../../shared/models';
 })
 export class AttachmentTileComponent {
   @Input() attachment: FileEntryModel;
+  @Output() download = new EventEmitter<any>();
 }
 

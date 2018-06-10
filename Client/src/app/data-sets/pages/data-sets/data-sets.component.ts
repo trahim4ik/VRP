@@ -16,7 +16,7 @@ import { ConfirmDialogComponent } from '../../../shared/components';
 })
 export class DataSetsComponent implements OnInit {
 
-  protected displayedColumns = ['insertDate', 'name', 'description', 'actions'];
+  protected displayedColumns = ['logo', 'insertDate', 'name', 'description', 'actions'];
   protected dataSource: DataSetsDataSource;
   protected paginatorSizes = PaginatorSizes;
   protected pageSize = DefaultPageSize;
@@ -51,17 +51,22 @@ export class DataSetsComponent implements OnInit {
   }
 
   onDelete(id: number) {
+
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
         title: 'Confirm dataset delete',
         content: 'Dataset related data will be removed. Are you sure you want to delete?'
       }
     });
+
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.network.dataSetController.delete(id)
-          .subscribe((data) => { this.dataSource.reload(); });
+      if (!result) {
+        return;
       }
+
+      this.network.dataSetController.delete(id)
+        .subscribe((data) => { this.dataSource.reload(); });
+
     });
   }
 

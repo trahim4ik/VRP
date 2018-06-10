@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { DataSetModel, DataSetActions } from '../../shared';
+import { DataSetModel, DataSetActions, DataSetsNetwork } from '../../shared';
 import { FileEntryModel } from '../../../shared/models';
 
 @Component({
